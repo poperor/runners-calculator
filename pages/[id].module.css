@@ -1,0 +1,29 @@
+.resultContainer,
+.inputContainer {
+  height: 9em;
+  margin-top: 5rem;
+  position: relative;
+}
+
+legend.boxLegend {
+  color: black;
+  font-size: 1.8rem;
+}
+
+.convHeader {
+  font-size: 2.5rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .convHeader {
+    font-size: 1.4rem;
+  }
+  .resultContainer,
+  .inputContainer {
+    height: 5em;
+    margin-top: 3rem;
+  }
+  legend.boxLegend {
+    font-size: 1rem;
+  }
+}

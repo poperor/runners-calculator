@@ -1,0 +1,39 @@
+.timeinput {
+    font-size: 2.5rem;
+}
+
+.mininput {
+    composes: timeinput;
+    width: 5rem;
+}
+
+.secinput {
+    composes: timeinput;
+    width: 5rem;
+    margin-left: 2rem;
+}
+
+.speedinput {
+    composes: timeinput;
+    width: 6rem;
+}
+
+@media only screen and (max-width: 480px) {
+    .timeinput {
+        font-size: 1.4rem;
+    }
+
+    .mininput {
+        width: 3rem;
+    }
+    
+    .secinput {
+        width: 3rem;
+        margin-left: 1.2rem;
+    }
+    
+    .speedinput {
+        width: 4rem;
+    }
+    
+}
