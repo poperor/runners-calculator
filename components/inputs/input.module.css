@@ -1,16 +1,21 @@
+.timeinputbox {
+    float:left;
+    margin-right:10px;
+}
+
+.timelabel {
+    font-size: 2rem;
+    display: block;
+}
+
 .timeinput {
     font-size: 2.5rem;
-}
-
-.mininput {
-    composes: timeinput;
     width: 5rem;
 }
 
-.secinput {
-    composes: timeinput;
-    width: 5rem;
-    margin-left: 2rem;
+.secinputbox {
+    composes: timeinputbox;
+    margin-left: 1.5rem;
 }
 
 .speedinput {
@@ -19,19 +24,15 @@
 }
 
 @media only screen and (max-width: 480px) {
-    .timeinput {
-        font-size: 1.4rem;
+    .timelabel {
+        font-size: 1.2rem;
     }
 
-    .mininput {
+    .timeinput {
+        font-size: 1.4rem;
         width: 3rem;
     }
-    
-    .secinput {
-        width: 3rem;
-        margin-left: 1.2rem;
-    }
-    
+
     .speedinput {
         width: 4rem;
     }

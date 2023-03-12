@@ -1,13 +1,13 @@
 .resultContainer,
 .inputContainer {
-  height: 9em;
+  height: 10em;
   margin-top: 5rem;
   position: relative;
 }
 
 legend.boxLegend {
   color: black;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 .convHeader {
@@ -20,7 +20,7 @@ legend.boxLegend {
   }
   .resultContainer,
   .inputContainer {
-    height: 5em;
+    height: 6.5em;
     margin-top: 3rem;
   }
   legend.boxLegend {
