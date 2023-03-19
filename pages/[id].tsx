@@ -4,14 +4,14 @@ import { useContext } from "react";
 import { getAllCalculatorPaths, Params, SpeedType, speedTypes } from "../lib/config";
 import styles from "./[id].module.css"
 import {upperCaseFirst} from "upper-case-first"
-import { CanonicalKph } from "../context/canonical-kph";
+import { CurrentValues } from "../context/current-values";
 
 interface Props {
   id: string;
 }
 
 const Conversion: NextPage<Props> = ({ id }) => {
-  const { canonicalKph } = useContext(CanonicalKph);
+  const { canonicalKph } = useContext(CurrentValues);
   const [inputTypeId, resultTypeId] = id.split("-to-");
   const inputType = speedTypes.find(
     (speedType) => speedType.id === inputTypeId

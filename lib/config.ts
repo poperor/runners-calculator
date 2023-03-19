@@ -5,6 +5,8 @@ import { MinutesPerKmInput } from "../components/inputs/minutes-per-km-input";
 import {
   ResultProps,
 } from "./conversion";
+import { DistanceTimeInput } from "../components/inputs/distance-time-input";
+import { DistanceTimeResult } from "../components/results/distance-time-result ";
 
 export interface SpeedType {
   id: string;
@@ -26,6 +28,12 @@ export const speedTypes: SpeedType[] = [
     inputComponent: MinutesPerKmInput,
     resultComponent: MinutesPerKmResult,
   },
+  {
+    id: "distance-time",
+    name: "distance time",
+    inputComponent: DistanceTimeInput,
+    resultComponent: DistanceTimeResult,
+  }
 ];
 
 export interface Params {
