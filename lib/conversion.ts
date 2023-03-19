@@ -82,9 +82,9 @@ export const toMinutesPerKm = (kph: number): MinutesPerKm | undefined => {
     }
 }
 
-export const toDistanceTime = (kph: number, distance: number): DistanceTime => {
+export const toDistanceTime = (kph: number, distance: number): DistanceTime | undefined => {
     if (!kph || !distance) {
-        return {min: 0, sec: 0, distance}
+        return undefined
     }
     const secPerDistance = (3600 / kph) * (distance / 1000) 
     return {

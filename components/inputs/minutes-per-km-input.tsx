@@ -48,7 +48,7 @@ export const MinutesPerKmInput = () => {
           value={minutesPerKm.min || ""}
         />{" "}
       </div>
-      <div className={styles.secinputbox}>
+      <div className={styles.timeinputbox}>
         <label className={styles.timelabel} htmlFor="seconds">
           sec
         </label>

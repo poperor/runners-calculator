@@ -8,9 +8,6 @@
     margin-right: 1.5rem;
 }
 
-.secinputbox {
-    composes: timeinputbox;
-}
 
 .timelabel {
     font-size: 2rem;
@@ -57,9 +54,6 @@
     
     .distanceinputbox {
         margin-right: 1rem;
-    }
-    
-    .secinputbox {
     }
     
 }

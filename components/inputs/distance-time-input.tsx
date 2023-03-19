@@ -23,6 +23,7 @@ export const DistanceTimeInput = () => {
     const distance = event.currentTarget.valueAsNumber;
     const newDistanceTime = { ...distanceTime, distance };
     setDistanceTime(newDistanceTime);
+    setInputDistance(distance);
     setCanonicalKph(fromDistanceTime(newDistanceTime));
   };
 
@@ -72,7 +73,7 @@ export const DistanceTimeInput = () => {
           value={distanceTime.min || ""}
         />{" "}
       </div>
-      <div className={styles.secinputbox}>
+      <div className={styles.timeinputbox}>
         <label className={styles.timelabel} htmlFor="seconds">
           sec
         </label>

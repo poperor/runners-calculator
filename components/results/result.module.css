@@ -1,9 +1,42 @@
 .result {
     font-size: 2.5rem;
-} 
+}
+
+.distanceinputbox {
+    float:left;
+    margin-right: 1.5rem;
+}
+
+.distanceinput {
+    font-size: 2.5rem;
+    width: 8rem;
+}
+
+.distancetimebox {
+    float:left;
+    margin-right: 1.5rem;
+}
+
+.timelabel {
+    font-size: 2rem;
+    display: block;
+}
 
 @media only screen and (max-width: 480px) {
     .result {
         font-size: 1.4rem;
+    }
+
+    .distanceinputbox {
+        margin-right: 1rem;
+    }
+    
+    .distanceinput {
+        font-size: 1.4rem;
+        width: 8rem;
+    }
+    
+    .distancetimebox {
+        margin-right: 1rem;
     }
 }
