@@ -6,10 +6,10 @@ import {
 } from "../../lib/conversion";
 import styles from "./input.module.css";
 import utilityStyles from "../../styles/utility.module.css";
-import { CanonicalKph } from "../../context/canonical-kph";
+import { CurrentValues } from "../../context/current-values";
 
 export const MinutesPerKmInput = () => {
-  const { canonicalKph, setCanonicalKph } = useContext(CanonicalKph);
+  const { canonicalKph, setCanonicalKph } = useContext(CurrentValues);
   const [minutesPerKm, setMinutesPerKm] = useState<MinutesPerKm>(
     toMinutesPerKm(canonicalKph) || { min: 0, sec: 0 }
   );
@@ -28,9 +28,8 @@ export const MinutesPerKmInput = () => {
     setCanonicalKph(fromMinutesPerKm(newMinPerKm));
   };
 
-  const handleKeyboardEvent = (e: KeyboardEvent<HTMLInputElement>) => {
+  const leaveFieldOnEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      console.log('do validate');
       e.currentTarget.blur()
     }
   };
@@ -58,7 +57,7 @@ export const MinutesPerKmInput = () => {
           className={styles.timeinput}
           type="number"
           onChange={onSecChange}
-          onKeyDown={handleKeyboardEvent}
+          onKeyDown={leaveFieldOnEnter}
           value={minutesPerKm.sec || ""}
         />
       </div>

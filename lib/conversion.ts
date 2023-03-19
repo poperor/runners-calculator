@@ -9,7 +9,7 @@ export interface MinutesPerKm {
     sec: number
 }
 
-export interface MinutesPerDistanceInMeters {
+export interface DistanceTime {
     min: number
     sec: number
     distance: number
@@ -20,7 +20,7 @@ export interface MinutesPerMile {
     sec: number
 }
 
-export interface MinutesPerDistanceInYards {
+export interface DistanceInYardsTime {
     min: number
     sec: number
     distance: number
@@ -40,7 +40,7 @@ export const fromMinutesPerKm = (minPerKm: MinutesPerKm): number => {
     }
 }
 
-export const fromMinutesPerDistanceInMeters = (minutesPerMeters: MinutesPerDistanceInMeters): number => {
+export const fromDistanceTime = (minutesPerMeters: DistanceTime): number => {
     const sec = minutesPerMeters.min * 60 + minutesPerMeters.sec
     if (!minutesPerMeters.distance || !sec) {
         return 0;
@@ -60,7 +60,7 @@ export const fromMinutesPerMile = (minPerMile: MinutesPerMile): number => {
     }
 }
 
-export const fromMinutesPerDistanceInYards = (minutesPerYards: MinutesPerDistanceInYards): number => {
+export const fromDistanceInYardsTime = (minutesPerYards: DistanceInYardsTime): number => {
     const sec = minutesPerYards.min * 60 + minutesPerYards.sec
     if (!minutesPerYards.distance || !sec) {
         return 0;
@@ -82,7 +82,10 @@ export const toMinutesPerKm = (kph: number): MinutesPerKm | undefined => {
     }
 }
 
-export const toMinutesPerDistanceInMeters = (kph: number, distance: number): MinutesPerDistanceInMeters => {
+export const toDistanceTime = (kph: number, distance: number): DistanceTime => {
+    if (!kph || !distance) {
+        return {min: 0, sec: 0, distance}
+    }
     const secPerDistance = (3600 / kph) * (distance / 1000) 
     return {
         min: Math.floor(secPerDistance / 60),
@@ -101,7 +104,7 @@ export const toMinutesPerMile = (kph: number): MinutesPerMile => {
     }
 }
 
-export const toMinutesPerDistanceInYards = (kph: number, distance: number): MinutesPerDistanceInYards => {
+export const toDistanceInYardsTime = (kph: number, distance: number): DistanceInYardsTime => {
     const mph = kph / KphMphRatio
     const secPerDistance = (2.04545455 / mph) * distance
     return {
