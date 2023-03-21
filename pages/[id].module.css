@@ -1,29 +1,38 @@
+.calculator {
+  color: aliceblue;
+}
+
 .resultContainer,
 .inputContainer {
   height: 10em;
-  margin-top: 5rem;
+  margin-top: 3rem;
   position: relative;
+  border-radius: 25px;
 }
 
 legend.boxLegend {
-  color: black;
+  color: white;
   font-size: 1.6rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .convHeader {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 @media only screen and (max-width: 480px) {
   .convHeader {
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
   .resultContainer,
   .inputContainer {
     height: 6.5em;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
   legend.boxLegend {
     font-size: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
