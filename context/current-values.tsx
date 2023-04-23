@@ -19,7 +19,7 @@ export const CurrentValues = createContext({} as Context);
 
 function Context({ children }: Props) {
   const [canonicalKph, setCanonicalKph] = useState<number>(0);
-  const [inputDistance, setInputDistance] = useState<|null>(null);
+  const [inputDistance, setInputDistance] = useState<number | null>(null);
   const [resultDistance, setResultDistance] = useState<number>(0);
 
   return (
