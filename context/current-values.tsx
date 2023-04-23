@@ -6,8 +6,8 @@ import { createContext, useState, Dispatch, SetStateAction } from "react";
 type Context = {
   canonicalKph: number;
   setCanonicalKph: Dispatch<SetStateAction<number>>;
-  inputDistance: number;
-  setInputDistance: Dispatch<SetStateAction<number>>;
+  inputDistance: number | null;
+  setInputDistance: Dispatch<SetStateAction<number | null>>;
   resultDistance: number;
   setResultDistance: Dispatch<SetStateAction<number>>;
 };
@@ -19,7 +19,7 @@ export const CurrentValues = createContext({} as Context);
 
 function Context({ children }: Props) {
   const [canonicalKph, setCanonicalKph] = useState<number>(0);
-  const [inputDistance, setInputDistance] = useState<number>(0);
+  const [inputDistance, setInputDistance] = useState<|null>(null);
   const [resultDistance, setResultDistance] = useState<number>(0);
 
   return (
