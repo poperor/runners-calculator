@@ -90,10 +90,11 @@ export const toDistanceTime = (kph: number, distance: number | null): DistanceTi
     if (!kph || !distance) {
         return undefined
     }
-    const secPerDistance = (3600 / kph) * (distance / 1000) 
+    const secPerDistance = (3600 / kph) * (distance / 1000)
+    const secPrecision = distance < 500 ? 1 : 0; 
     return {
         min: Math.floor(secPerDistance / 60),
-        sec: +(secPerDistance % 60).toFixed(0),
+        sec: +(secPerDistance % 60).toFixed(secPrecision),
         distance
     }
 }
