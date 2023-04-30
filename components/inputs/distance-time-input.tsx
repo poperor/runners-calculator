@@ -20,6 +20,11 @@ export const DistanceTimeInput = () => {
     }
   );
 
+  // If no input distance is present canonical kph is reset since it is dependent on distance here
+  if (!inputDistance) {
+      setCanonicalKph(0)
+  }
+
   const onDistanceChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const distance = event.currentTarget.valueAsNumber;
     const newDistanceTime = { ...distanceTime, distance };
