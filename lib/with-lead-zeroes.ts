@@ -1,4 +1,4 @@
-const withLeadZeroes = (twoDigitumber :number): String => {
+const withLeadZeroes = (twoDigitumber :number | null): String => {
     if (!twoDigitumber) {
         return "00"
     } else if (twoDigitumber < 10) {

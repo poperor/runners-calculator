@@ -7,17 +7,23 @@ import {
 import styles from "./input.module.css";
 import utilityStyles from "../../styles/utility.module.css";
 import { CurrentValues } from "../../context/current-values";
+import displayInputValue from "../../lib/display-input-value";
 
 export const DistanceTimeInput = () => {
   const { canonicalKph, setCanonicalKph, inputDistance, setInputDistance } =
     useContext(CurrentValues);
   const [distanceTime, setDistanceTime] = useState<DistanceTime>(
     toDistanceTime(canonicalKph, inputDistance) || {
-      min: 0,
-      sec: 0,
+      min: null,
+      sec: null,
       distance: inputDistance,
     }
   );
+
+  // If no input distance is present canonical kph is reset since it is dependent on distance here
+  if (!inputDistance) {
+      setCanonicalKph(0)
+  }
 
   const onDistanceChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const distance = event.currentTarget.valueAsNumber;
@@ -58,7 +64,7 @@ export const DistanceTimeInput = () => {
           className={styles.distanceinput}
           type="number"
           onChange={onDistanceChange}
-          value={distanceTime.distance || ""}
+          value={displayInputValue(distanceTime.distance)}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -70,7 +76,7 @@ export const DistanceTimeInput = () => {
           className={styles.timeinput}
           type="number"
           onChange={onMinChange}
-          value={distanceTime.min || ""}
+          value={displayInputValue(distanceTime.min)}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -83,7 +89,7 @@ export const DistanceTimeInput = () => {
           type="number"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
-          value={distanceTime.sec || ""}
+          value={displayInputValue(distanceTime.sec)}
         />
       </div>
     </div>
