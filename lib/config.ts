@@ -45,7 +45,7 @@ export interface Params {
 export const getAllCalculatorPaths = (): Array<Params> => {
   const paths = speedTypes.flatMap((inputSpeedType) =>
     speedTypes
-      .filter((resultSpeedType) => inputSpeedType.id !== resultSpeedType.id)
+      .filter((resultSpeedType) => inputSpeedType.id !== resultSpeedType.id || resultSpeedType.id === "distance-time")
       .map(
         (resultSpeedType) => inputSpeedType.id + "-to-" + resultSpeedType.id
       )
