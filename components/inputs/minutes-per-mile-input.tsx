@@ -23,7 +23,6 @@ export const MinutesPerMileInput = () => {
   };
 
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    console.log("hola onSecChange mile", event.currentTarget.value)
     const sec = event.currentTarget.value !== "" ? event.currentTarget.valueAsNumber : null;
     const newMinPerMile = { ...minutesPerMile, sec };
     setMinutesPerMile(newMinPerMile);
