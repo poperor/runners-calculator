@@ -26,7 +26,7 @@ export interface DistanceInYardsTime {
     distance: number
 }
 
-const KphMphRatio = 1.60934
+const KphMphRatio = 1.609344
 const YardsPerMile = 1760
 
 export const fromKph = (kph: number): number => kph 
