@@ -16,8 +16,8 @@ export interface DistanceTime {
 }
 
 export interface MinutesPerMile {
-    min: number
-    sec: number
+    min: number | null
+    sec: number | null
 }
 
 export interface DistanceInYardsTime {
@@ -26,7 +26,7 @@ export interface DistanceInYardsTime {
     distance: number
 }
 
-const KphMphRatio = 1.60934
+const KphMphRatio = 1.609344
 const YardsPerMile = 1760
 
 export const fromKph = (kph: number): number => kph 
@@ -56,11 +56,13 @@ export const fromDistanceTime = (minutesPerMeters: DistanceTime): number => {
 export const fromMph = (mph: number): number => mph * KphMphRatio
 
 export const fromMinutesPerMile = (minPerMile: MinutesPerMile): number => {
-    const sec = minPerMile.min * 60 + minPerMile.sec
-    if (!sec) {
+    const min = minPerMile.min !== null ? minPerMile.min : 0
+    const sec = minPerMile.sec !== null ? minPerMile.sec : 0
+    const totalSec = min * 60 + sec 
+    if (!totalSec) {
         return 0
     } else {
-        return (3600 / sec) * KphMphRatio
+        return (3600 / totalSec) * KphMphRatio
     }
 }
 
@@ -101,7 +103,10 @@ export const toDistanceTime = (kph: number, distance: number | null): DistanceTi
 
 export const toMph = (canonicalKph: number): number => canonicalKph / KphMphRatio
 
-export const toMinutesPerMile = (kph: number): MinutesPerMile => {
+export const toMinutesPerMile = (kph: number): MinutesPerMile | undefined => {
+    if (!kph) {
+        return undefined
+    }
     const secPerMile = (3600 / kph) * KphMphRatio
     return {
         min: Math.floor(secPerMile / 60),
