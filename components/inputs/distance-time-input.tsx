@@ -12,18 +12,26 @@ import displayInputValue from "../../lib/display-input-value";
 export const DistanceTimeInput = () => {
   const { canonicalKph, setCanonicalKph, inputDistance, setInputDistance } =
     useContext(CurrentValues);
-  const [distanceTime, setDistanceTime] = useState<DistanceTime>(
-    toDistanceTime(canonicalKph, inputDistance) || {
-      min: null,
-      sec: null,
-      distance: inputDistance,
-    }
-  );
+  const currentDistanceTime = toDistanceTime(canonicalKph, inputDistance) || {
+    min: null,
+    sec: null,
+    distance: inputDistance,
+  };
+  const [distanceTime, setDistanceTime] =
+    useState<DistanceTime>(currentDistanceTime);
 
+  if (
+    currentDistanceTime.min !== distanceTime.min &&
+    currentDistanceTime.sec !== distanceTime.sec &&
+    currentDistanceTime.distance !== distanceTime.distance
+  ) {
+    setDistanceTime(currentDistanceTime);
+  }  
   // If no input distance is present canonical kph is reset since it is dependent on distance here
-  if (!inputDistance) {
-      setCanonicalKph(0)
-  }
+  // if (!inputDistance) {
+  //   setCanonicalKph(0);
+  // }
+  
 
   const onDistanceChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const distance = event.currentTarget.valueAsNumber;
