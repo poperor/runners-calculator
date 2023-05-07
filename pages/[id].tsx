@@ -4,7 +4,6 @@ import { useContext } from "react";
 import {
   getAllCalculatorPaths,
   Params,
-  SpeedType,
   speedTypes,
 } from "../lib/config";
 import styles from "./[id].module.css";
@@ -19,7 +18,7 @@ interface Props {
 }
 
 const Conversion: NextPage<Props> = ({ id }) => {
-  const { canonicalKph, setCanonicalKph, inputDistance, setInputDistance, resultDistance, setResultDistance } =
+  const { canonicalKph, inputDistance, setInputDistance, resultDistance, setResultDistance } =
     useContext(CurrentValues);
   const [inputTypeId, resultTypeId] = id.split("-to-");
   const inputType = speedTypes.find(
@@ -56,8 +55,8 @@ const Conversion: NextPage<Props> = ({ id }) => {
           </legend>
           {inputType.inputComponent()}
         </fieldset>
-        <div>
-          <Link href={`${resultTypeId}-to-${inputTypeId}`}>
+        <div className={styles.switchContainer}>
+          <Link className={styles.switchLink} href={`${resultTypeId}-to-${inputTypeId}`}>
             <Image
               priority
               src={switcharrows}
