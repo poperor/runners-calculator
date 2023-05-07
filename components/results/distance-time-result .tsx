@@ -2,7 +2,6 @@ import { useContext } from "react";
 import {
   ResultProps,
   toDistanceTime,
-  toMinutesPerKm,
 } from "../../lib/conversion";
 import resultStyles from "./result.module.css";
 import utilityStyles from "../../styles/utility.module.css";
