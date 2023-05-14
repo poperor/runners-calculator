@@ -7,7 +7,11 @@ import displayInputValue from "../../lib/display-input-value";
 
 export const KphInput = () => {
   const { canonicalKph, setCanonicalKph } = useContext(CurrentValues);
-  const [kph, setKph] = useState(canonicalKph ? toKph(canonicalKph) : null);
+  const currentKph = canonicalKph ? toKph(canonicalKph) : null
+  const [kph, setKph] = useState(currentKph);
+  if (currentKph != kph) {
+    setKph(currentKph)
+  }
 
   const onChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const kph = event.currentTarget.valueAsNumber;

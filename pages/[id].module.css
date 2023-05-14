@@ -5,9 +5,12 @@
 .resultContainer,
 .inputContainer {
   height: 10em;
-  margin-top: 3rem;
   position: relative;
   border-radius: 25px;
+}
+
+.inputContainer {
+  margin-top: 3rem;
 }
 
 legend.boxLegend {
@@ -19,6 +22,17 @@ legend.boxLegend {
 
 .convHeader {
   font-size: 2rem;
+}
+
+.switchContainer {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+.switchLink {
+  text-align: center;
+  display: block;
 }
 
 @media only screen and (max-width: 480px) {

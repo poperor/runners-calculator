@@ -11,9 +11,11 @@ import displayInputValue from "../../lib/display-input-value"
 
 export const MinutesPerMileInput = () => {
   const { canonicalKph, setCanonicalKph } = useContext(CurrentValues);
-  const [minutesPerMile, setMinutesPerMile] = useState<MinutesPerMile>(
-    toMinutesPerMile(canonicalKph) || { min: null, sec: null }
-  );
+  const currentMinutesPerMile = toMinutesPerMile(canonicalKph) || { min: null, sec: null }
+  const [minutesPerMile, setMinutesPerMile] = useState<MinutesPerMile>(currentMinutesPerMile);
+  if (currentMinutesPerMile.min !== minutesPerMile.min && currentMinutesPerMile.sec !== minutesPerMile.sec) {
+    setMinutesPerMile(currentMinutesPerMile);
+  }
 
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const min = event.currentTarget.value !== "" ? event.currentTarget.valueAsNumber : null;
