@@ -20,14 +20,16 @@ export const MinutesPerKmInput = () => {
   }
 
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const min = event.currentTarget.value !== "" ? event.currentTarget.valueAsNumber : null;
+    const receivedMin = event.currentTarget.valueAsNumber;
+    const min = receivedMin || null;
     const newMinPerKm = { ...minutesPerKm, min };
     setMinutesPerKm(newMinPerKm);
     setCanonicalKph(fromMinutesPerKm(newMinPerKm));
   };
 
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const sec = event.currentTarget.valueAsNumber;
+    const receivedSec = event.currentTarget.valueAsNumber;
+    const sec = receivedSec || null;
     const newMinPerKm = { ...minutesPerKm, sec };
     setMinutesPerKm(newMinPerKm);
     setCanonicalKph(fromMinutesPerKm(newMinPerKm));

@@ -10,6 +10,7 @@ export interface MinutesPerKm {
 }
 
 export interface DistanceTime {
+    hrs: number | null
     min: number | null
     sec: number | null
     distance: number | null
@@ -43,9 +44,10 @@ export const fromMinutesPerKm = (minPerKm: MinutesPerKm): number => {
 }
 
 export const fromDistanceTime = (minutesPerMeters: DistanceTime): number => {
+    const hrs = minutesPerMeters.hrs !== null ? minutesPerMeters.hrs : 0
     const min = minutesPerMeters.min !== null ? minutesPerMeters.min : 0
     const sec = minutesPerMeters.sec !== null ? minutesPerMeters.sec : 0
-    const totalSec = min * 60 + sec
+    const totalSec = hrs * 60 * 60 + min * 60 + sec
     if (!minutesPerMeters.distance || !totalSec) {
         return 0;
     }
@@ -93,10 +95,15 @@ export const toDistanceTime = (kph: number, distance: number | null): DistanceTi
         return undefined
     }
     const secPerDistance = (3600 / kph) * (distance / 1000)
-    const secPrecision = distance < 500 ? 1 : 0; 
+    const secPrecision = distance < 500 ? 1 : 0;
+    const hrs = Math.floor(secPerDistance / 3600)
+    const remainingSecs = secPerDistance - hrs * 3600
+    const min = Math.floor(remainingSecs / 60)
+    const sec = +(remainingSecs % 60).toFixed(secPrecision)
     return {
-        min: Math.floor(secPerDistance / 60),
-        sec: +(secPerDistance % 60).toFixed(secPrecision),
+        hrs,
+        min,
+        sec,
         distance
     }
 }

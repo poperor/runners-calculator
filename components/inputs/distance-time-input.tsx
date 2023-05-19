@@ -13,6 +13,7 @@ export const DistanceTimeInput = () => {
   const { canonicalKph, setCanonicalKph, inputDistance, setInputDistance } =
     useContext(CurrentValues);
   const currentDistanceTime = toDistanceTime(canonicalKph, inputDistance) || {
+    hrs: null,
     min: null,
     sec: null,
     distance: inputDistance,
@@ -27,14 +28,10 @@ export const DistanceTimeInput = () => {
   ) {
     setDistanceTime(currentDistanceTime);
   }  
-  // If no input distance is present canonical kph is reset since it is dependent on distance here
-  // if (!inputDistance) {
-  //   setCanonicalKph(0);
-  // }
-  
 
   const onDistanceChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const distance = event.currentTarget.valueAsNumber;
+    const receivedDistance = event.currentTarget.valueAsNumber;
+    const distance = receivedDistance || null;
     const newDistanceTime = { ...distanceTime, distance };
     setDistanceTime(newDistanceTime);
     setInputDistance(distance);
@@ -42,14 +39,16 @@ export const DistanceTimeInput = () => {
   };
 
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const min = event.currentTarget.valueAsNumber;
+    const receivedMin = event.currentTarget.valueAsNumber;
+    const min = receivedMin || null;
     const newDistanceTime = { ...distanceTime, min };
     setDistanceTime(newDistanceTime);
     setCanonicalKph(fromDistanceTime(newDistanceTime));
   };
 
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const sec = event.currentTarget.valueAsNumber;
+    const receivedSec = event.currentTarget.valueAsNumber;
+    const sec = receivedSec || null;
     const newDistanceTime = { ...distanceTime, sec };
     setDistanceTime(newDistanceTime);
     setCanonicalKph(fromDistanceTime(newDistanceTime));
