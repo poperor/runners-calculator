@@ -13,19 +13,21 @@ export const MinutesPerMileInput = () => {
   const { canonicalKph, setCanonicalKph } = useContext(CurrentValues);
   const currentMinutesPerMile = toMinutesPerMile(canonicalKph) || { min: null, sec: null }
   const [minutesPerMile, setMinutesPerMile] = useState<MinutesPerMile>(currentMinutesPerMile);
-  if (currentMinutesPerMile.min !== minutesPerMile.min && currentMinutesPerMile.sec !== minutesPerMile.sec) {
+  if (minutesPerMile === null || (currentMinutesPerMile.min !== minutesPerMile.min && currentMinutesPerMile.sec !== minutesPerMile.sec)) {
     setMinutesPerMile(currentMinutesPerMile);
   }
 
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const min = event.currentTarget.value !== "" ? event.currentTarget.valueAsNumber : null;
+    const receivedMin = event.currentTarget.valueAsNumber;
+    const min = receivedMin || null;
     const newMinPerMile = { ...minutesPerMile, min };
     setMinutesPerMile(newMinPerMile);
     setCanonicalKph(fromMinutesPerMile(newMinPerMile));
   };
 
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const sec = event.currentTarget.value !== "" ? event.currentTarget.valueAsNumber : null;
+    const receivedSec = event.currentTarget.valueAsNumber;
+    const sec = receivedSec || null;
     const newMinPerMile = { ...minutesPerMile, sec };
     setMinutesPerMile(newMinPerMile);
     setCanonicalKph(fromMinutesPerMile(newMinPerMile));
@@ -48,7 +50,7 @@ export const MinutesPerMileInput = () => {
           className={styles.timeinput}
           type="number"
           onChange={onMinChange}
-          value={displayInputValue(minutesPerMile.min)}
+          value={displayInputValue(minutesPerMile?.min)}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -61,7 +63,7 @@ export const MinutesPerMileInput = () => {
           type="number"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
-          value={displayInputValue(minutesPerMile.sec)}
+          value={displayInputValue(minutesPerMile?.sec)}
         />
       </div>
     </div>

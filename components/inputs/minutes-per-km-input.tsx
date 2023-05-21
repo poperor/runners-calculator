@@ -15,19 +15,21 @@ export const MinutesPerKmInput = () => {
   const [minutesPerKm, setMinutesPerKm] = useState<MinutesPerKm>(
     toMinutesPerKm(canonicalKph) || { min: null, sec: null }
   );
-  if (currentMinutesPerKm.min !== minutesPerKm.min && currentMinutesPerKm.sec !== minutesPerKm.sec) {
+  if (minutesPerKm === null || (currentMinutesPerKm.min !== minutesPerKm.min && currentMinutesPerKm.sec !== minutesPerKm.sec)) {
     setMinutesPerKm(currentMinutesPerKm);
   }
 
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const min = event.currentTarget.value !== "" ? event.currentTarget.valueAsNumber : null;
+    const receivedMin = event.currentTarget.valueAsNumber;
+    const min = receivedMin || null;
     const newMinPerKm = { ...minutesPerKm, min };
     setMinutesPerKm(newMinPerKm);
     setCanonicalKph(fromMinutesPerKm(newMinPerKm));
   };
 
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const sec = event.currentTarget.valueAsNumber;
+    const receivedSec = event.currentTarget.valueAsNumber;
+    const sec = receivedSec || null;
     const newMinPerKm = { ...minutesPerKm, sec };
     setMinutesPerKm(newMinPerKm);
     setCanonicalKph(fromMinutesPerKm(newMinPerKm));
@@ -50,7 +52,7 @@ export const MinutesPerKmInput = () => {
           className={styles.timeinput}
           type="number"
           onChange={onMinChange}
-          value={displayInputValue(minutesPerKm.min)}
+          value={displayInputValue(minutesPerKm?.min)}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -63,7 +65,7 @@ export const MinutesPerKmInput = () => {
           type="number"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
-          value={displayInputValue(minutesPerKm.sec)}
+          value={displayInputValue(minutesPerKm?.sec)}
         />
       </div>
     </div>

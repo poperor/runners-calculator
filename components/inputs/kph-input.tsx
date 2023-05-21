@@ -14,7 +14,8 @@ export const KphInput = () => {
   }
 
   const onChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const kph = event.currentTarget.valueAsNumber;
+    const receivedKph = event.currentTarget.valueAsNumber;
+    const kph = receivedKph || 0;
     setKph(kph);
     setCanonicalKph(kph);
   };
