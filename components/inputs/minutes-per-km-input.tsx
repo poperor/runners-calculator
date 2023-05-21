@@ -15,7 +15,7 @@ export const MinutesPerKmInput = () => {
   const [minutesPerKm, setMinutesPerKm] = useState<MinutesPerKm>(
     toMinutesPerKm(canonicalKph) || { min: null, sec: null }
   );
-  if (currentMinutesPerKm.min !== minutesPerKm.min && currentMinutesPerKm.sec !== minutesPerKm.sec) {
+  if (minutesPerKm === null || (currentMinutesPerKm.min !== minutesPerKm.min && currentMinutesPerKm.sec !== minutesPerKm.sec)) {
     setMinutesPerKm(currentMinutesPerKm);
   }
 
@@ -52,7 +52,7 @@ export const MinutesPerKmInput = () => {
           className={styles.timeinput}
           type="number"
           onChange={onMinChange}
-          value={displayInputValue(minutesPerKm.min)}
+          value={displayInputValue(minutesPerKm?.min)}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -65,7 +65,7 @@ export const MinutesPerKmInput = () => {
           type="number"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
-          value={displayInputValue(minutesPerKm.sec)}
+          value={displayInputValue(minutesPerKm?.sec)}
         />
       </div>
     </div>

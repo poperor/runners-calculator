@@ -22,12 +22,14 @@ export const DistanceTimeInput = () => {
     useState<DistanceTime>(currentDistanceTime);
 
   if (
-    currentDistanceTime.min !== distanceTime.min &&
-    currentDistanceTime.sec !== distanceTime.sec &&
-    currentDistanceTime.distance !== distanceTime.distance
+    distanceTime == null ||
+    (currentDistanceTime.hrs !== distanceTime.hrs &&
+      currentDistanceTime.min !== distanceTime.min &&
+      currentDistanceTime.sec !== distanceTime.sec &&
+      currentDistanceTime.distance !== distanceTime.distance)
   ) {
     setDistanceTime(currentDistanceTime);
-  }  
+  }
 
   const onDistanceChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const receivedDistance = event.currentTarget.valueAsNumber;
@@ -71,7 +73,7 @@ export const DistanceTimeInput = () => {
           className={styles.distanceinput}
           type="number"
           onChange={onDistanceChange}
-          value={displayInputValue(distanceTime.distance)}
+          value={displayInputValue(distanceTime?.distance)}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -83,7 +85,7 @@ export const DistanceTimeInput = () => {
           className={styles.timeinput}
           type="number"
           onChange={onMinChange}
-          value={displayInputValue(distanceTime.min)}
+          value={displayInputValue(distanceTime?.min)}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -96,7 +98,7 @@ export const DistanceTimeInput = () => {
           type="number"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
-          value={displayInputValue(distanceTime.sec)}
+          value={displayInputValue(distanceTime?.sec)}
         />
       </div>
     </div>
