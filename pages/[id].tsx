@@ -1,11 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import { useContext } from "react";
-import {
-  getAllCalculatorPaths,
-  Params,
-  speedTypes,
-} from "../lib/config";
+import { getAllCalculatorPaths, Params, speedTypes } from "../lib/config";
 import styles from "./[id].module.css";
 import { upperCaseFirst } from "upper-case-first";
 import { CurrentValues } from "../context/current-values";
@@ -18,8 +14,13 @@ interface Props {
 }
 
 const Conversion: NextPage<Props> = ({ id }) => {
-  const { canonicalKph, inputDistance, setInputDistance, resultDistance, setResultDistance } =
-    useContext(CurrentValues);
+  const {
+    canonicalKph,
+    inputDistance,
+    setInputDistance,
+    resultDistance,
+    setResultDistance,
+  } = useContext(CurrentValues);
   const [inputTypeId, resultTypeId] = id.split("-to-");
   const inputType = speedTypes.find(
     (speedType) => speedType.id === inputTypeId
@@ -30,11 +31,15 @@ const Conversion: NextPage<Props> = ({ id }) => {
 
   const adjustDistances = () => {
     if (inputTypeId === "distance-time" && inputDistance !== null) {
-      setResultDistance(inputDistance)
+      setResultDistance(inputDistance);
     }
     if (resultTypeId === "distance-time" && resultDistance !== null) {
-      setInputDistance(resultDistance)
+      setInputDistance(resultDistance);
     }
+  };
+
+  const getAltSpeedTypes= () => {
+    return speedTypes.filter(speedType => speedType.id !== inputTypeId && speedType.id !== resultTypeId).map(speedType => speedType.id)  
   }
 
   if (!inputType || !resultType) {
@@ -49,14 +54,23 @@ const Conversion: NextPage<Props> = ({ id }) => {
       </Head>
       <div>
         <h1 className={styles.convHeader}>{title}</h1>
-        <fieldset className={styles.inputContainer}>
-          <legend className={styles.boxLegend}>
-            {upperCaseFirst(inputType.name)}
-          </legend>
-          {inputType.inputComponent()}
-        </fieldset>
+        <div className={styles.inputContainer}>
+          <div className={styles.inputComponent}>
+            <fieldset className={styles.inputFieldset}>
+              <legend className={styles.boxLegend}>
+                {upperCaseFirst(inputType.name)}
+              </legend>
+              {inputType.inputComponent()}
+            </fieldset>
+          </div>
+          <div className={styles.inputAlternativesContainer}>{getAltSpeedTypes()}</div>
+        </div>
+
         <div className={styles.switchContainer}>
-          <Link className={styles.switchLink} href={`${resultTypeId}-to-${inputTypeId}`}>
+          <Link
+            className={styles.switchLink}
+            href={`${resultTypeId}-to-${inputTypeId}`}
+          >
             <Image
               priority
               src={switcharrows}
@@ -67,13 +81,18 @@ const Conversion: NextPage<Props> = ({ id }) => {
             />
           </Link>
         </div>
-        <fieldset className={styles.resultContainer}>
-          <legend className={styles.boxLegend}>
-            {" "}
-            {upperCaseFirst(resultType.name)}
-          </legend>
-          {resultType.resultComponent({ canonicalKph })}
-        </fieldset>
+        <div className={styles.resultContainer}>
+          <div className={styles.resultComponent}>
+            <fieldset className={styles.resultFieldset}>
+              <legend className={styles.boxLegend}>
+                {" "}
+                {upperCaseFirst(resultType.name)}
+              </legend>
+              {resultType.resultComponent({ canonicalKph })}
+            </fieldset>
+          </div>
+          <div className={styles.resultAlternativesContainer}>{getAltSpeedTypes()}</div>
+        </div>
       </div>
     </>
   );

@@ -2,11 +2,26 @@
   color: aliceblue;
 }
 
-.resultContainer,
-.inputContainer {
+.resultFieldset,
+.inputFieldset {
   height: 10em;
   position: relative;
   border-radius: 25px;
+}
+
+.inputContainer,
+.resultContainer {
+  display: flex;
+}
+
+.inputComponent,
+.resultComponent {
+  flex: 80%;
+}
+
+.inputAlternativesContainer,
+.resultAlternativesContainer {
+  flex: 20%;
 }
 
 .inputContainer {
@@ -39,8 +54,8 @@ legend.boxLegend {
   .convHeader {
     font-size: 1rem;
   }
-  .resultContainer,
-  .inputContainer {
+  .inputFieldset,
+  .resultFieldset {
     height: 6.5em;
     margin-top: 2rem;
   }
