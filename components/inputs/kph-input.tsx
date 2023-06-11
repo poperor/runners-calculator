@@ -3,21 +3,19 @@ import styles from "./input.module.css";
 import utilityStyles from "../../styles/utility.module.css";
 import { toKph } from "../../lib/conversion";
 import { CurrentValues } from "../../context/current-values";
-import displayInputValue from "../../lib/display-input-value";
 
 export const KphInput = () => {
   const { canonicalKph, setCanonicalKph } = useContext(CurrentValues);
   const currentKph = canonicalKph ? toKph(canonicalKph) : null
-  const [kph, setKph] = useState(currentKph);
-  if (currentKph != kph) {
-    setKph(currentKph)
+  const [kph, setKph] = useState(currentKph?.toString() || null);
+  if (currentKph !== kph) {
+    setKph(currentKph?.toString() || null);
   }
 
   const onChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const receivedKph = event.currentTarget.valueAsNumber;
-    const kph = receivedKph || 0;
+    const kph = event.currentTarget.value.replace(/[^0-9.]/g, "");
     setKph(kph);
-    setCanonicalKph(kph);
+    setCanonicalKph(Number.parseFloat(kph));
   };
 
   const leaveFieldOnEnter = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -30,8 +28,9 @@ export const KphInput = () => {
     <div className={utilityStyles.verticalAlign}>
       <input
         className={styles.speedinput}
-        type="number"
-        value={displayInputValue(kph)}
+        type="text"
+        inputMode="numeric"
+        value={kph || ""}
         onChange={onChange}
         onKeyDown={leaveFieldOnEnter}
       />
