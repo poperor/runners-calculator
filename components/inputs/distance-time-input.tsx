@@ -32,7 +32,8 @@ export const DistanceTimeInput = () => {
   }
 
   const onDistanceChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const receivedDistance = event.currentTarget.valueAsNumber;
+    const validatedInput = event.currentTarget.value.replace(/[^0-9]/g, "");
+    const receivedDistance = Number.parseInt(validatedInput);
     const distance = receivedDistance || null;
     const newDistanceTime = { ...distanceTime, distance };
     setDistanceTime(newDistanceTime);
