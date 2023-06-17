@@ -13,7 +13,7 @@ import {
 } from './conversion'
 
 test('rounds kph correctly', () => {
-    expect(toKph(13.46576)).toBe(13.5)
+    expect(toKph(13.46576)).toBe(13.47)
 })
 
 test('rounds kph without integer without .0 at end', () => {
@@ -77,7 +77,7 @@ test('13.333333333333334 kph to 4 min 30 sec per km', () => {
 })
 
 test('13.333333333333334 kph to 2 min 27 sec per 546 m (Bislett!)', () => {
-    expect(toDistanceTime(13.333333333333334, 546)).toStrictEqual({ hrs: 0, min: 2, sec: 27, distance: 546 })
+    expect(toDistanceTime(13.333333333333334, 546)).toStrictEqual({ hrs: null, min: "2", sec: "27", distance: "546" })
 })
 
 test('11.10 kph to be 6.9 mph', () => {

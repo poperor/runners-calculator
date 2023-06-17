@@ -32,9 +32,9 @@ export const DistanceTimeResult = ({ canonicalKph }: ResultProps) => {
         />{" "}
       </div>
       {distanceTime && <div className={styles.distancetimebox}>
-        {distanceTime.hrs !== 0 && <span>{withLeadZeroes(distanceTime.hrs)}:</span>}
-        {distanceTime.min !== 0 && <span>{withLeadZeroes(distanceTime.min)}:</span>}
-        <span>{withLeadZeroes(distanceTime.sec)} </span>
+        {Number(distanceTime.hrs) !== 0 && <span>{withLeadZeroes(Number(distanceTime.hrs))}:</span>}
+        {Number(distanceTime.min) !== 0 && <span>{withLeadZeroes(Number(distanceTime.min))}:</span>}
+        <span>{withLeadZeroes(Number(distanceTime.sec))} </span>
       </div>}
     </div>
   );
