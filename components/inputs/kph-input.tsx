@@ -6,9 +6,10 @@ import { CurrentValues } from "../../context/current-values";
 
 export const KphInput = () => {
   const { canonicalKph, setCanonicalKph } = useContext(CurrentValues);
-  const currentKph = canonicalKph ? toKph(canonicalKph) : null
+  const currentKph = canonicalKph ? toKph(canonicalKph) : null;
   const [kph, setKph] = useState(currentKph?.toString() || null);
-  if (currentKph !== kph) {
+  const numericKph = kph ? Number(kph) : null;
+  if (currentKph !== numericKph) {  
     setKph(currentKph?.toString() || null);
   }
 

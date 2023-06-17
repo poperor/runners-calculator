@@ -77,7 +77,7 @@ export const fromDistanceInYardsTime = (minutesPerYards: DistanceInYardsTime): n
     return (3600 / sec) * distanceInMiles * KphMphRatio
 }
 
-export const toKph = (canonicalKph: number): number => +canonicalKph.toFixed(1)
+export const toKph = (canonicalKph: number): number => +canonicalKph.toFixed(2)
 
 export const toMinutesPerKm = (kph: number): MinutesPerKm | undefined => {
     if (!kph) {
