@@ -26,7 +26,7 @@
 
 .speedinput {
     composes: timeinput;
-    width: 6rem;
+    width: 8rem;
 }
 
 @media only screen and (max-width: 480px) {
@@ -45,7 +45,7 @@
     }
 
     .speedinput {
-        width: 4rem;
+        width: 6rem;
     }
 
     .timeinputbox {

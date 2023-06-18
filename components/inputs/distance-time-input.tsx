@@ -16,7 +16,7 @@ export const DistanceTimeInput = () => {
     hrs: null,
     min: null,
     sec: null,
-    distance: inputDistance,
+    distance: inputDistance ? inputDistance.toString() : null,
   };
   const [distanceTime, setDistanceTime] =
     useState<DistanceTime>(currentDistanceTime);
@@ -32,26 +32,22 @@ export const DistanceTimeInput = () => {
   }
 
   const onDistanceChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const validatedInput = event.currentTarget.value.replace(/[^0-9]/g, "");
-    const receivedDistance = Number.parseInt(validatedInput);
-    const distance = receivedDistance || null;
+    const distance = event.currentTarget.value.replace(/[^0-9]/g, "");
     const newDistanceTime = { ...distanceTime, distance };
     setDistanceTime(newDistanceTime);
-    setInputDistance(distance);
+    setInputDistance(Number(distance));
     setCanonicalKph(fromDistanceTime(newDistanceTime));
   };
 
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const receivedMin = event.currentTarget.valueAsNumber;
-    const min = receivedMin || null;
+    const min = event.currentTarget.value.replace(/[^0-9]/g, "");
     const newDistanceTime = { ...distanceTime, min };
     setDistanceTime(newDistanceTime);
     setCanonicalKph(fromDistanceTime(newDistanceTime));
   };
-
+  
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const receivedSec = event.currentTarget.valueAsNumber;
-    const sec = receivedSec || null;
+    const sec = event.currentTarget.value.replace(/[^.0-9]/g, "");
     const newDistanceTime = { ...distanceTime, sec };
     setDistanceTime(newDistanceTime);
     setCanonicalKph(fromDistanceTime(newDistanceTime));
@@ -72,9 +68,9 @@ export const DistanceTimeInput = () => {
         <input
           id="distance"
           className={styles.distanceinput}
-          type="number"
+          type="text"
           onChange={onDistanceChange}
-          value={displayInputValue(distanceTime?.distance)}
+          value={distanceTime?.distance || ""}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -84,9 +80,9 @@ export const DistanceTimeInput = () => {
         <input
           id="minutes"
           className={styles.timeinput}
-          type="number"
+          type="text"
           onChange={onMinChange}
-          value={displayInputValue(distanceTime?.min)}
+          value={distanceTime?.min || ""}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -96,10 +92,10 @@ export const DistanceTimeInput = () => {
         <input
           id="seconds"
           className={styles.timeinput}
-          type="number"
+          type="text"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
-          value={displayInputValue(distanceTime?.sec)}
+          value={distanceTime?.sec || ""}
         />
       </div>
     </div>

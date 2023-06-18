@@ -5,20 +5,20 @@ export interface ResultProps {
 }
 
 export interface MinutesPerKm {
-    min: number | null
-    sec: number | null
+    min: string | null
+    sec: string | null
 }
 
 export interface DistanceTime {
-    hrs: number | null
-    min: number | null
-    sec: number | null
-    distance: number | null
+    hrs: string | null
+    min: string | null
+    sec: string | null
+    distance: string | null
 }
 
 export interface MinutesPerMile {
-    min: number | null
-    sec: number | null
+    min: string | null
+    sec: string | null
 }
 
 export interface DistanceInYardsTime {
@@ -35,7 +35,7 @@ export const fromKph = (kph: number): number => kph
 export const fromMinutesPerKm = (minPerKm: MinutesPerKm): number => {
     const min = minPerKm.min !== null ? minPerKm.min : 0
     const sec = minPerKm.sec !== null ? minPerKm.sec : 0
-    const totalSec = min * 60 + sec
+    const totalSec = Number(min) * 60 + Number(sec)
     if (!totalSec) {
         return 0
     } else {
@@ -43,15 +43,15 @@ export const fromMinutesPerKm = (minPerKm: MinutesPerKm): number => {
     }
 }
 
-export const fromDistanceTime = (minutesPerMeters: DistanceTime): number => {
-    const hrs = minutesPerMeters.hrs !== null ? minutesPerMeters.hrs : 0
-    const min = minutesPerMeters.min !== null ? minutesPerMeters.min : 0
-    const sec = minutesPerMeters.sec !== null ? minutesPerMeters.sec : 0
-    const totalSec = hrs * 60 * 60 + min * 60 + sec
-    if (!minutesPerMeters.distance || !totalSec) {
+export const fromDistanceTime = (distanceTime: DistanceTime): number => {
+    const hrs = distanceTime.hrs !== null ? distanceTime.hrs : 0
+    const min = distanceTime.min !== null ? distanceTime.min : 0
+    const sec = distanceTime.sec !== null ? distanceTime.sec : 0
+    const totalSec = Number(hrs) * 60 * 60 + Number(min) * 60 + Number(sec)
+    if (!distanceTime.distance || !totalSec) {
         return 0;
     }
-    const distanceInKm = minutesPerMeters.distance / 1000
+    const distanceInKm = Number(distanceTime.distance) / 1000
     return (3600 / totalSec) * distanceInKm
 }
 
@@ -60,7 +60,7 @@ export const fromMph = (mph: number): number => mph * KphMphRatio
 export const fromMinutesPerMile = (minPerMile: MinutesPerMile): number => {
     const min = minPerMile.min !== null ? minPerMile.min : 0
     const sec = minPerMile.sec !== null ? minPerMile.sec : 0
-    const totalSec = min * 60 + sec 
+    const totalSec = Number(min) * 60 + Number(sec) 
     if (!totalSec) {
         return 0
     } else {
@@ -77,7 +77,7 @@ export const fromDistanceInYardsTime = (minutesPerYards: DistanceInYardsTime): n
     return (3600 / sec) * distanceInMiles * KphMphRatio
 }
 
-export const toKph = (canonicalKph: number): number => +canonicalKph.toFixed(1)
+export const toKph = (canonicalKph: number): number => +canonicalKph.toFixed(2)
 
 export const toMinutesPerKm = (kph: number): MinutesPerKm | undefined => {
     if (!kph) {
@@ -85,8 +85,8 @@ export const toMinutesPerKm = (kph: number): MinutesPerKm | undefined => {
     }
     const secPerKm = 3600 / kph
     return {
-        min: Math.floor(secPerKm / 60),
-        sec: +(secPerKm % 60).toFixed(0),
+        min: Math.floor(secPerKm / 60).toString(),
+        sec: (+(secPerKm % 60).toFixed(0)).toString(),
     }
 }
 
@@ -101,10 +101,10 @@ export const toDistanceTime = (kph: number, distance: number | null): DistanceTi
     const min = Math.floor(remainingSecs / 60)
     const sec = +(remainingSecs % 60).toFixed(secPrecision)
     return {
-        hrs,
-        min,
-        sec,
-        distance
+        hrs: hrs ? hrs.toString() : null,
+        min: min ? min.toString() : null,
+        sec: sec ? sec.toString() : null,
+        distance: distance ? distance.toString() : null
     }
 }
 
@@ -116,8 +116,8 @@ export const toMinutesPerMile = (kph: number): MinutesPerMile | undefined => {
     }
     const secPerMile = (3600 / kph) * KphMphRatio
     return {
-        min: Math.floor(secPerMile / 60),
-        sec: +(secPerMile % 60).toFixed(0),
+        min: Math.floor(secPerMile / 60).toString(),
+        sec: (+(secPerMile % 60).toFixed(0)).toString(),
     }
 }
 
