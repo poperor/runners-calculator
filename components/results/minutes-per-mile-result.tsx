@@ -9,8 +9,8 @@ export const MinutesPerMileResult = ({ canonicalKph }: ResultProps) => {
     <div>
       {minutesPerMile && (
         <div className={`${utilityStyles.verticalAlign} ${resultStyles.result}`}>
-          <span>{withLeadZeroes(minutesPerMile.min)}</span>:
-          <span>{withLeadZeroes(minutesPerMile.sec)} </span>
+          <span>{withLeadZeroes(Number(minutesPerMile.min))}</span>:
+          <span>{withLeadZeroes(Number(minutesPerMile.sec))} </span>
         </div>
       )}
     </div>

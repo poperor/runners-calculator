@@ -92,7 +92,7 @@ export const DistanceTimeInput = () => {
         <input
           id="seconds"
           className={styles.timeinput}
-          type="number"
+          type="text"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
           value={distanceTime?.sec || ""}

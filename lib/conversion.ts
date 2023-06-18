@@ -5,8 +5,8 @@ export interface ResultProps {
 }
 
 export interface MinutesPerKm {
-    min: number | null
-    sec: number | null
+    min: string | null
+    sec: string | null
 }
 
 export interface DistanceTime {
@@ -17,8 +17,8 @@ export interface DistanceTime {
 }
 
 export interface MinutesPerMile {
-    min: number | null
-    sec: number | null
+    min: string | null
+    sec: string | null
 }
 
 export interface DistanceInYardsTime {
@@ -35,7 +35,7 @@ export const fromKph = (kph: number): number => kph
 export const fromMinutesPerKm = (minPerKm: MinutesPerKm): number => {
     const min = minPerKm.min !== null ? minPerKm.min : 0
     const sec = minPerKm.sec !== null ? minPerKm.sec : 0
-    const totalSec = min * 60 + sec
+    const totalSec = Number(min) * 60 + Number(sec)
     if (!totalSec) {
         return 0
     } else {
@@ -60,7 +60,7 @@ export const fromMph = (mph: number): number => mph * KphMphRatio
 export const fromMinutesPerMile = (minPerMile: MinutesPerMile): number => {
     const min = minPerMile.min !== null ? minPerMile.min : 0
     const sec = minPerMile.sec !== null ? minPerMile.sec : 0
-    const totalSec = min * 60 + sec 
+    const totalSec = Number(min) * 60 + Number(sec) 
     if (!totalSec) {
         return 0
     } else {
@@ -85,8 +85,8 @@ export const toMinutesPerKm = (kph: number): MinutesPerKm | undefined => {
     }
     const secPerKm = 3600 / kph
     return {
-        min: Math.floor(secPerKm / 60),
-        sec: +(secPerKm % 60).toFixed(0),
+        min: Math.floor(secPerKm / 60).toString(),
+        sec: (+(secPerKm % 60).toFixed(0)).toString(),
     }
 }
 
@@ -116,8 +116,8 @@ export const toMinutesPerMile = (kph: number): MinutesPerMile | undefined => {
     }
     const secPerMile = (3600 / kph) * KphMphRatio
     return {
-        min: Math.floor(secPerMile / 60),
-        sec: +(secPerMile % 60).toFixed(0),
+        min: Math.floor(secPerMile / 60).toString(),
+        sec: (+(secPerMile % 60).toFixed(0)).toString(),
     }
 }
 

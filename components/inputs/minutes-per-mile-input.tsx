@@ -18,16 +18,14 @@ export const MinutesPerMileInput = () => {
   }
 
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const receivedMin = event.currentTarget.valueAsNumber;
-    const min = receivedMin || null;
+    const min = event.currentTarget.value.replace(/[^0-9]/g, "");
     const newMinPerMile = { ...minutesPerMile, min };
     setMinutesPerMile(newMinPerMile);
     setCanonicalKph(fromMinutesPerMile(newMinPerMile));
   };
 
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const receivedSec = event.currentTarget.valueAsNumber;
-    const sec = receivedSec || null;
+    const sec = event.currentTarget.value.replace(/[^0-9]/g, "");
     const newMinPerMile = { ...minutesPerMile, sec };
     setMinutesPerMile(newMinPerMile);
     setCanonicalKph(fromMinutesPerMile(newMinPerMile));
@@ -48,9 +46,9 @@ export const MinutesPerMileInput = () => {
         <input
           id="minutes"
           className={styles.timeinput}
-          type="number"
+          type="text"
           onChange={onMinChange}
-          value={displayInputValue(minutesPerMile?.min)}
+          value={minutesPerMile?.min || ""}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -60,10 +58,10 @@ export const MinutesPerMileInput = () => {
         <input
           id="seconds"
           className={styles.timeinput}
-          type="number"
+          type="text"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
-          value={displayInputValue(minutesPerMile?.sec)}
+          value={minutesPerMile?.sec || ""}
         />
       </div>
     </div>
