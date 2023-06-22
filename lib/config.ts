@@ -1,14 +1,16 @@
 import { KphResult } from "../components/results/kph-result";
 import { KphInput } from "../components/inputs/kph-input";
-import { MinutesPerKmResult } from "../components/results/minutes-per-km-result";
-import { MinutesPerKmInput } from "../components/inputs/minutes-per-km-input";
+import { PacePerKmResult } from "../components/results/pace-per-km-result";
+import { PacePerKmInput } from "../components/inputs/pace-per-km-input";
 import {
   ResultProps,
 } from "./conversion";
 import { DistanceTimeInput } from "../components/inputs/distance-time-input";
 import { DistanceTimeResult } from "../components/results/distance-time-result ";
-import { MinutesPerMileInput } from "../components/inputs/minutes-per-mile-input";
-import { MinutesPerMileResult } from "../components/results/minutes-per-mile-result";
+import { PacePerMileInput } from "../components/inputs/pace-per-mile-input";
+import { PacePerMileResult } from "../components/results/pace-per-mile-result";
+import { MphInput } from "../components/inputs/mph-input";
+import { MphResult } from "../components/results/mph-result";
 
 export interface SpeedType {
   id: string;
@@ -25,16 +27,22 @@ export const speedTypes: SpeedType[] = [
     resultComponent: KphResult,
   },
   {
-    id: "minutes-per-km",
-    name: "minutes per kilometer",
-    inputComponent: MinutesPerKmInput,
-    resultComponent: MinutesPerKmResult,
+    id: "mph",
+    name: "miles per hour",
+    inputComponent: MphInput,
+    resultComponent: MphResult,
   },
   {
-    id: "minutes-per-mile",
-    name: "minutes per mile",
-    inputComponent: MinutesPerMileInput,
-    resultComponent: MinutesPerMileResult,
+    id: "pace-per-km",
+    name: "pace per kilometer",
+    inputComponent: PacePerKmInput,
+    resultComponent: PacePerKmResult,
+  },
+  {
+    id: "pace-per-mile",
+    name: "pace per mile",
+    inputComponent: PacePerMileInput,
+    resultComponent: PacePerMileResult,
   },
   {
     id: "distance-time",

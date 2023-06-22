@@ -1,14 +1,14 @@
 import {
-    fromMinutesPerKm,
+    fromPacePerKm,
     fromDistanceTime,
     fromMph, 
-    fromMinutesPerMile,
+    fromPacePerMile,
     fromDistanceInYardsTime,
     toKph,
-    toMinutesPerKm,
+    toPacePerKm,
     toDistanceTime,
     toMph,
-    toMinutesPerMile,
+    toPacePerMile,
     toDistanceInYardsTime
 } from './conversion'
 
@@ -29,15 +29,15 @@ test('rounds kph without integer without .0 at end', () => {
 })
 
 test('6 min per km to be 10 kph', () => {
-    expect(fromMinutesPerKm({ min: "6", sec: "0" })).toBe(10)
+    expect(fromPacePerKm({ min: "6", sec: "0" })).toBe(10)
 })
 
 test('4 min 30 per km to be 13.3333... kph', () => {
-    expect(fromMinutesPerKm({ min: "4", sec: "30" })).toBe(13.333333333333334)
+    expect(fromPacePerKm({ min: "4", sec: "30" })).toBe(13.333333333333334)
 })
 
 test('0 min 0 per km to be 0 kph', () => {
-    expect(fromMinutesPerKm({ min: "0", sec: "0" })).toBe(0)
+    expect(fromPacePerKm({ min: "0", sec: "0" })).toBe(0)
 })
 
 test('3 min per 500 m to be 10 kph', () => {
@@ -61,11 +61,11 @@ test('6.9 mph to be 11.10 rounded', () => {
 })
 
 test('7 min per miles to be 13.79 kph rounded', () => {
-    expect(+fromMinutesPerMile({ min: "7", sec: "0" }).toFixed(2)).toBe(13.79)
+    expect(+fromPacePerMile({ min: "7", sec: "0" }).toFixed(2)).toBe(13.79)
 })
 
 test('0 min 0 per miles to be 0 kph', () => {
-    expect(fromMinutesPerMile({ min: "0", sec: "0" })).toBe(0)
+    expect(fromPacePerMile({ min: "0", sec: "0" })).toBe(0)
 })
 
 test('7 min per 1760 yards to be 13.79 rounded', () => {
@@ -73,7 +73,7 @@ test('7 min per 1760 yards to be 13.79 rounded', () => {
 })
 
 test('13.333333333333334 kph to 4 min 30 sec per km', () => {
-    expect(toMinutesPerKm(13.333333333333334)).toStrictEqual({ min: "4", sec: "30" })
+    expect(toPacePerKm(13.333333333333334)).toStrictEqual({ min: "4", sec: "30" })
 })
 
 test('13.333333333333334 kph to 2 min 27 sec per 546 m (Bislett!)', () => {
@@ -85,7 +85,7 @@ test('11.10 kph to be 6.9 mph', () => {
 })
 
 test('13.79 kph to 7 min per mile', () => {
-    expect(toMinutesPerMile(13.79)).toStrictEqual({ min: "7", sec: "0" })
+    expect(toPacePerMile(13.79)).toStrictEqual({ min: "7", sec: "0" })
 })
 
 test('13.79 kph to 3 min 30 sec per 880 yards', () => {

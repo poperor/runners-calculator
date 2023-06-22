@@ -1,36 +1,36 @@
 import { useState, useContext, KeyboardEvent } from "react";
 import {
-  fromMinutesPerKm,
-  MinutesPerKm,
-  toMinutesPerKm,
+  fromPacePerKm,
+  PacePerKm,
+  toPacePerKm,
 } from "../../lib/conversion";
 import styles from "./input.module.css";
 import utilityStyles from "../../styles/utility.module.css"
 import { CurrentValues } from "../../context/current-values";
 import displayInputValue from "../../lib/display-input-value"
 
-export const MinutesPerKmInput = () => {
+export const PacePerKmInput = () => {
   const { canonicalKph, setCanonicalKph } = useContext(CurrentValues);
-  const currentMinutesPerKm = toMinutesPerKm(canonicalKph) || { min: null, sec: null }
-  const [minutesPerKm, setMinutesPerKm] = useState<MinutesPerKm>(
-    toMinutesPerKm(canonicalKph) || { min: null, sec: null }
+  const currentPacePerKm = toPacePerKm(canonicalKph) || { min: null, sec: null }
+  const [pacePerKm, setPacePerKm] = useState<PacePerKm>(
+    toPacePerKm(canonicalKph) || { min: null, sec: null }
   );
-  if (minutesPerKm === null || (currentMinutesPerKm.min !== minutesPerKm.min && currentMinutesPerKm.sec !== minutesPerKm.sec)) {
-    setMinutesPerKm(currentMinutesPerKm);
+  if (pacePerKm === null || (currentPacePerKm.min !== pacePerKm.min && currentPacePerKm.sec !== pacePerKm.sec)) {
+    setPacePerKm(currentPacePerKm);
   }
 
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const min = event.currentTarget.value.replace(/[^0-9]/g, "");
-    const newMinPerKm = { ...minutesPerKm, min };
-    setMinutesPerKm(newMinPerKm);
-    setCanonicalKph(fromMinutesPerKm(newMinPerKm));
+    const newPacePerKm = { ...pacePerKm, min };
+    setPacePerKm(newPacePerKm);
+    setCanonicalKph(fromPacePerKm(newPacePerKm));
   };
 
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const sec = event.currentTarget.value.replace(/[^0-9]/g, "");
-    const newMinPerKm = { ...minutesPerKm, sec };
-    setMinutesPerKm(newMinPerKm);
-    setCanonicalKph(fromMinutesPerKm(newMinPerKm));
+    const newPacePerKm = { ...pacePerKm, sec };
+    setPacePerKm(newPacePerKm);
+    setCanonicalKph(fromPacePerKm(newPacePerKm));
   };
 
   const leaveFieldOnEnter = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -50,7 +50,7 @@ export const MinutesPerKmInput = () => {
           className={styles.timeinput}
           type="text"
           onChange={onMinChange}
-          value={minutesPerKm?.min || ""}
+          value={pacePerKm?.min || ""}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -63,7 +63,7 @@ export const MinutesPerKmInput = () => {
           type="text"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
-          value={minutesPerKm?.sec || ""}
+          value={pacePerKm?.sec || ""}
         />
       </div>
     </div>
