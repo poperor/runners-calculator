@@ -4,7 +4,7 @@ export interface ResultProps {
     canonicalKph: number
 }
 
-export interface MinutesPerKm {
+export interface PacePerKm {
     min: string | null
     sec: string | null
 }
@@ -16,7 +16,7 @@ export interface DistanceTime {
     distance: string | null
 }
 
-export interface MinutesPerMile {
+export interface PacePerMile {
     min: string | null
     sec: string | null
 }
@@ -32,7 +32,7 @@ const YardsPerMile = 1760
 
 export const fromKph = (kph: number): number => kph 
 
-export const fromMinutesPerKm = (minPerKm: MinutesPerKm): number => {
+export const fromPacePerKm = (minPerKm: PacePerKm): number => {
     const min = minPerKm.min !== null ? minPerKm.min : 0
     const sec = minPerKm.sec !== null ? minPerKm.sec : 0
     const totalSec = Number(min) * 60 + Number(sec)
@@ -57,7 +57,7 @@ export const fromDistanceTime = (distanceTime: DistanceTime): number => {
 
 export const fromMph = (mph: number): number => mph * KphMphRatio
 
-export const fromMinutesPerMile = (minPerMile: MinutesPerMile): number => {
+export const fromPacePerMile = (minPerMile: PacePerMile): number => {
     const min = minPerMile.min !== null ? minPerMile.min : 0
     const sec = minPerMile.sec !== null ? minPerMile.sec : 0
     const totalSec = Number(min) * 60 + Number(sec) 
@@ -79,7 +79,7 @@ export const fromDistanceInYardsTime = (minutesPerYards: DistanceInYardsTime): n
 
 export const toKph = (canonicalKph: number): number => +canonicalKph.toFixed(2)
 
-export const toMinutesPerKm = (kph: number): MinutesPerKm | undefined => {
+export const toPacePerKm = (kph: number): PacePerKm | undefined => {
     if (!kph) {
         return undefined
     }
@@ -110,7 +110,7 @@ export const toDistanceTime = (kph: number, distance: number | null): DistanceTi
 
 export const toMph = (canonicalKph: number): number => canonicalKph / KphMphRatio
 
-export const toMinutesPerMile = (kph: number): MinutesPerMile | undefined => {
+export const toPacePerMile = (kph: number): PacePerMile | undefined => {
     if (!kph) {
         return undefined
     }
