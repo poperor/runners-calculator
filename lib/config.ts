@@ -9,6 +9,8 @@ import { DistanceTimeInput } from "../components/inputs/distance-time-input";
 import { DistanceTimeResult } from "../components/results/distance-time-result ";
 import { PacePerMileInput } from "../components/inputs/pace-per-mile-input";
 import { PacePerMileResult } from "../components/results/pace-per-mile-result";
+import { MphInput } from "../components/inputs/mph-input";
+import { MphResult } from "../components/results/mph-result";
 
 export interface SpeedType {
   id: string;
@@ -23,6 +25,12 @@ export const speedTypes: SpeedType[] = [
     name: "kilometers per hour",
     inputComponent: KphInput,
     resultComponent: KphResult,
+  },
+  {
+    id: "mph",
+    name: "miles per hour",
+    inputComponent: MphInput,
+    resultComponent: MphResult,
   },
   {
     id: "pace-per-km",
