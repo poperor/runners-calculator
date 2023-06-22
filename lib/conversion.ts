@@ -32,9 +32,9 @@ const YardsPerMile = 1760
 
 export const fromKph = (kph: number): number => kph 
 
-export const fromPacePerKm = (minPerKm: PacePerKm): number => {
-    const min = minPerKm.min !== null ? minPerKm.min : 0
-    const sec = minPerKm.sec !== null ? minPerKm.sec : 0
+export const fromPacePerKm = (pacePerKm: PacePerKm): number => {
+    const min = pacePerKm.min !== null ? pacePerKm.min : 0
+    const sec = pacePerKm.sec !== null ? pacePerKm.sec : 0
     const totalSec = Number(min) * 60 + Number(sec)
     if (!totalSec) {
         return 0
@@ -57,9 +57,9 @@ export const fromDistanceTime = (distanceTime: DistanceTime): number => {
 
 export const fromMph = (mph: number): number => mph * KphMphRatio
 
-export const fromPacePerMile = (minPerMile: PacePerMile): number => {
-    const min = minPerMile.min !== null ? minPerMile.min : 0
-    const sec = minPerMile.sec !== null ? minPerMile.sec : 0
+export const fromPacePerMile = (pacePerMile: PacePerMile): number => {
+    const min = pacePerMile.min !== null ? pacePerMile.min : 0
+    const sec = pacePerMile.sec !== null ? pacePerMile.sec : 0
     const totalSec = Number(min) * 60 + Number(sec) 
     if (!totalSec) {
         return 0

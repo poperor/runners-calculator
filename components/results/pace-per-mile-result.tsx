@@ -4,13 +4,13 @@ import utilityStyles from '../../styles/utility.module.css'
 import withLeadZeroes from "../../lib/with-lead-zeroes";
 
 export const PacePerMileResult = ({ canonicalKph }: ResultProps) => {
-  const PacePerMile = toPacePerMile(canonicalKph);
+  const pacePerMile = toPacePerMile(canonicalKph);
   return (
     <div>
-      {PacePerMile && (
+      {pacePerMile && (
         <div className={`${utilityStyles.verticalAlign} ${resultStyles.result}`}>
-          <span>{withLeadZeroes(Number(PacePerMile.min))}</span>:
-          <span>{withLeadZeroes(Number(PacePerMile.sec))} </span>
+          <span>{withLeadZeroes(Number(pacePerMile.min))}</span>:
+          <span>{withLeadZeroes(Number(pacePerMile.sec))} </span>
         </div>
       )}
     </div>

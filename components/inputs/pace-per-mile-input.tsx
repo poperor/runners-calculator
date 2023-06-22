@@ -12,23 +12,23 @@ import displayInputValue from "../../lib/display-input-value"
 export const PacePerMileInput = () => {
   const { canonicalKph, setCanonicalKph } = useContext(CurrentValues);
   const currentPacePerMile = toPacePerMile(canonicalKph) || { min: null, sec: null }
-  const [PacePerMile, setPacePerMile] = useState<PacePerMile>(currentPacePerMile);
-  if (PacePerMile === null || (currentPacePerMile.min !== PacePerMile.min && currentPacePerMile.sec !== PacePerMile.sec)) {
+  const [pacePerMile, setPacePerMile] = useState<PacePerMile>(currentPacePerMile);
+  if (pacePerMile === null || (currentPacePerMile.min !== pacePerMile.min && currentPacePerMile.sec !== pacePerMile.sec)) {
     setPacePerMile(currentPacePerMile);
   }
 
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const min = event.currentTarget.value.replace(/[^0-9]/g, "");
-    const newMinPerMile = { ...PacePerMile, min };
-    setPacePerMile(newMinPerMile);
-    setCanonicalKph(fromPacePerMile(newMinPerMile));
+    const newPacePerMile = { ...pacePerMile, min };
+    setPacePerMile(newPacePerMile);
+    setCanonicalKph(fromPacePerMile(newPacePerMile));
   };
 
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const sec = event.currentTarget.value.replace(/[^0-9]/g, "");
-    const newMinPerMile = { ...PacePerMile, sec };
-    setPacePerMile(newMinPerMile);
-    setCanonicalKph(fromPacePerMile(newMinPerMile));
+    const newPacePerMile = { ...pacePerMile, sec };
+    setPacePerMile(newPacePerMile);
+    setCanonicalKph(fromPacePerMile(newPacePerMile));
   };
 
   const leaveFieldOnEnter = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -48,7 +48,7 @@ export const PacePerMileInput = () => {
           className={styles.timeinput}
           type="text"
           onChange={onMinChange}
-          value={PacePerMile?.min || ""}
+          value={pacePerMile?.min || ""}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -61,7 +61,7 @@ export const PacePerMileInput = () => {
           type="text"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
-          value={PacePerMile?.sec || ""}
+          value={pacePerMile?.sec || ""}
         />
       </div>
     </div>

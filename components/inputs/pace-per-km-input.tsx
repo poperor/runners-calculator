@@ -12,25 +12,25 @@ import displayInputValue from "../../lib/display-input-value"
 export const PacePerKmInput = () => {
   const { canonicalKph, setCanonicalKph } = useContext(CurrentValues);
   const currentPacePerKm = toPacePerKm(canonicalKph) || { min: null, sec: null }
-  const [PacePerKm, setPacePerKm] = useState<PacePerKm>(
+  const [pacePerKm, setPacePerKm] = useState<PacePerKm>(
     toPacePerKm(canonicalKph) || { min: null, sec: null }
   );
-  if (PacePerKm === null || (currentPacePerKm.min !== PacePerKm.min && currentPacePerKm.sec !== PacePerKm.sec)) {
+  if (pacePerKm === null || (currentPacePerKm.min !== pacePerKm.min && currentPacePerKm.sec !== pacePerKm.sec)) {
     setPacePerKm(currentPacePerKm);
   }
 
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const min = event.currentTarget.value.replace(/[^0-9]/g, "");
-    const newMinPerKm = { ...PacePerKm, min };
-    setPacePerKm(newMinPerKm);
-    setCanonicalKph(fromPacePerKm(newMinPerKm));
+    const newPacePerKm = { ...pacePerKm, min };
+    setPacePerKm(newPacePerKm);
+    setCanonicalKph(fromPacePerKm(newPacePerKm));
   };
 
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const sec = event.currentTarget.value.replace(/[^0-9]/g, "");
-    const newMinPerKm = { ...PacePerKm, sec };
-    setPacePerKm(newMinPerKm);
-    setCanonicalKph(fromPacePerKm(newMinPerKm));
+    const newPacePerKm = { ...pacePerKm, sec };
+    setPacePerKm(newPacePerKm);
+    setCanonicalKph(fromPacePerKm(newPacePerKm));
   };
 
   const leaveFieldOnEnter = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -50,7 +50,7 @@ export const PacePerKmInput = () => {
           className={styles.timeinput}
           type="text"
           onChange={onMinChange}
-          value={PacePerKm?.min || ""}
+          value={pacePerKm?.min || ""}
         />{" "}
       </div>
       <div className={styles.timeinputbox}>
@@ -63,7 +63,7 @@ export const PacePerKmInput = () => {
           type="text"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
-          value={PacePerKm?.sec || ""}
+          value={pacePerKm?.sec || ""}
         />
       </div>
     </div>
