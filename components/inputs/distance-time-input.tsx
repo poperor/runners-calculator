@@ -7,25 +7,26 @@ import {
 import styles from "./input.module.css";
 import utilityStyles from "../../styles/utility.module.css";
 import { CurrentValues } from "../../context/current-values";
-import displayInputValue from "../../lib/display-input-value";
 
 export const DistanceTimeInput = () => {
   const { canonicalKph, setCanonicalKph, inputDistance, setInputDistance } =
     useContext(CurrentValues);
+    console.log("inputDistance", inputDistance)
   const currentDistanceTime = toDistanceTime(canonicalKph, inputDistance) || {
     hrs: null,
     min: null,
     sec: null,
     distance: inputDistance ? inputDistance.toString() : null,
   };
+  console.log("currentDistanceTime", currentDistanceTime)
   const [distanceTime, setDistanceTime] =
     useState<DistanceTime>(currentDistanceTime);
-
+  console.log("distanceTime", distanceTime);
   if (
     distanceTime == null ||
-    (currentDistanceTime.hrs !== distanceTime.hrs &&
-      currentDistanceTime.min !== distanceTime.min &&
-      currentDistanceTime.sec !== distanceTime.sec &&
+    (currentDistanceTime.hrs !== distanceTime.hrs ||
+      currentDistanceTime.min !== distanceTime.min ||
+      currentDistanceTime.sec !== distanceTime.sec ||
       currentDistanceTime.distance !== distanceTime.distance)
   ) {
     setDistanceTime(currentDistanceTime);

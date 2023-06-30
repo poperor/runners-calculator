@@ -15,6 +15,7 @@ import { MphResult } from "../components/results/mph-result";
 export interface SpeedType {
   id: string;
   name: string;
+  shortName: string;
   inputComponent: () => JSX.Element;
   resultComponent: ({ canonicalKph }: ResultProps) => JSX.Element;
 }
@@ -23,30 +24,35 @@ export const speedTypes: SpeedType[] = [
   {
     id: "kph",
     name: "kilometers per hour",
+    shortName: "kph",
     inputComponent: KphInput,
     resultComponent: KphResult,
   },
   {
     id: "mph",
     name: "miles per hour",
+    shortName: "mph",
     inputComponent: MphInput,
     resultComponent: MphResult,
   },
   {
     id: "pace-per-km",
     name: "pace per kilometer",
+    shortName: "pace per km",
     inputComponent: PacePerKmInput,
     resultComponent: PacePerKmResult,
   },
   {
     id: "pace-per-mile",
     name: "pace per mile",
+    shortName: "pace per mile",
     inputComponent: PacePerMileInput,
     resultComponent: PacePerMileResult,
   },
   {
     id: "distance-time",
     name: "distance time",
+    shortName: "distance time",
     inputComponent: DistanceTimeInput,
     resultComponent: DistanceTimeResult,
   }

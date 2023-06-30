@@ -1,7 +1,14 @@
 import { Dispatch, SetStateAction } from "react"
+import { SpeedType } from "./config"
 
 export interface ResultProps {
     canonicalKph: number
+}
+
+export interface AlternativeProps {
+    speedTypes: SpeedType[]
+    inputSpeedType?: SpeedType
+    resultSpeedType?: SpeedType
 }
 
 export interface PacePerKm {

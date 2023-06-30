@@ -7,13 +7,16 @@ import {
 import styles from "./input.module.css";
 import utilityStyles from "../../styles/utility.module.css";
 import { CurrentValues } from "../../context/current-values";
-import displayInputValue from "../../lib/display-input-value"
 
 export const PacePerMileInput = () => {
-  const { canonicalKph, setCanonicalKph } = useContext(CurrentValues);
+  const { canonicalKph, setCanonicalKph, setInputDistance } = useContext(CurrentValues);
   const currentPacePerMile = toPacePerMile(canonicalKph) || { min: null, sec: null }
   const [pacePerMile, setPacePerMile] = useState<PacePerMile>(currentPacePerMile);
-  if (pacePerMile === null || (currentPacePerMile.min !== pacePerMile.min && currentPacePerMile.sec !== pacePerMile.sec)) {
+  if (
+    pacePerMile === null ||
+    currentPacePerMile.min !== pacePerMile.min ||
+    currentPacePerMile.sec !== pacePerMile.sec
+  ) {
     setPacePerMile(currentPacePerMile);
   }
 
@@ -22,6 +25,7 @@ export const PacePerMileInput = () => {
     const newPacePerMile = { ...pacePerMile, min };
     setPacePerMile(newPacePerMile);
     setCanonicalKph(fromPacePerMile(newPacePerMile));
+    setInputDistance(1603);
   };
 
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
@@ -29,6 +33,7 @@ export const PacePerMileInput = () => {
     const newPacePerMile = { ...pacePerMile, sec };
     setPacePerMile(newPacePerMile);
     setCanonicalKph(fromPacePerMile(newPacePerMile));
+    setInputDistance(1603);
   };
 
   const leaveFieldOnEnter = (e: KeyboardEvent<HTMLInputElement>) => {

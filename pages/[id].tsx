@@ -8,6 +8,7 @@ import { CurrentValues } from "../context/current-values";
 import Image from "next/image";
 import switcharrows from "../public/switch-vertical_2.svg";
 import Link from "next/link";
+import { AlternativeButtons } from "../components/alternatives-buttons/alternative-buttons";
 
 interface Props {
   id: string;
@@ -39,7 +40,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
   };
 
   const getAltSpeedTypes= () => {
-    return speedTypes.filter(speedType => speedType.id !== inputTypeId && speedType.id !== resultTypeId).map(speedType => speedType.id)  
+    return speedTypes.filter(speedType => speedType.id !== inputTypeId && speedType.id !== resultTypeId)
   }
 
   if (!inputType || !resultType) {
@@ -63,7 +64,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
               {inputType.inputComponent()}
             </fieldset>
           </div>
-          <div className={styles.inputAlternativesContainer}>{getAltSpeedTypes()}</div>
+          <AlternativeButtons resultSpeedType={resultType} speedTypes={getAltSpeedTypes()} />
         </div>
 
         <div className={styles.switchContainer}>
@@ -91,7 +92,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
               {resultType.resultComponent({ canonicalKph })}
             </fieldset>
           </div>
-          <div className={styles.resultAlternativesContainer}>{getAltSpeedTypes()}</div>
+          <AlternativeButtons inputSpeedType={inputType} speedTypes={getAltSpeedTypes()} />
         </div>
       </div>
     </>
