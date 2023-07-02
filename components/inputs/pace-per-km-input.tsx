@@ -1,42 +1,22 @@
-import { useState, useContext, KeyboardEvent } from "react";
-import {
-  fromPacePerKm,
-  PacePerKm,
-  toPacePerKm,
-} from "../../lib/conversion";
+import { useContext, KeyboardEvent } from "react";
 import styles from "./input.module.css";
 import utilityStyles from "../../styles/utility.module.css"
 import { CurrentValues } from "../../context/current-values";
 
 export const PacePerKmInput = () => {
-  const { canonicalKph, setCanonicalKph, setInputDistance } = useContext(CurrentValues);
-  const currentPacePerKm = toPacePerKm(canonicalKph) || { min: null, sec: null }
-  const [pacePerKm, setPacePerKm] = useState<PacePerKm>(
-    toPacePerKm(canonicalKph) || { min: null, sec: null }
-  );
-  if (
-    pacePerKm === null ||
-    currentPacePerKm.min !== pacePerKm.min ||
-    currentPacePerKm.sec !== pacePerKm.sec
-  ) {
-    setPacePerKm(currentPacePerKm);
-  }
+  const { pacePerKm, changedPacePerKm } = useContext(CurrentValues);
   
   
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const min = event.currentTarget.value.replace(/[^0-9]/g, "");
     const newPacePerKm = { ...pacePerKm, min };
-    setPacePerKm(newPacePerKm);
-    setCanonicalKph(fromPacePerKm(newPacePerKm));
-    setInputDistance(1000);
+    changedPacePerKm(newPacePerKm);
   };
   
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const sec = event.currentTarget.value.replace(/[^0-9]/g, "");
+    const sec = event.currentTarget.value.replace(/[^.0-9]/g, "");
     const newPacePerKm = { ...pacePerKm, sec };
-    setPacePerKm(newPacePerKm);
-    setCanonicalKph(fromPacePerKm(newPacePerKm));
-    setInputDistance(1000);
+    changedPacePerKm(newPacePerKm);
   };
 
   const leaveFieldOnEnter = (e: KeyboardEvent<HTMLInputElement>) => {

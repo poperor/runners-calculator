@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import { useContext } from "react";
-import { getAllCalculatorPaths, Params, speedTypes } from "../lib/config";
+import { getAllCalculatorPaths, Params, SpeedType, speedTypes } from "../lib/config";
 import styles from "./[id].module.css";
 import { upperCaseFirst } from "upper-case-first";
 import { CurrentValues } from "../context/current-values";
@@ -18,7 +18,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
   const {
     canonicalKph,
     inputDistance,
-    setInputDistance,
+    changedInputDistance,
     resultDistance,
     setResultDistance,
   } = useContext(CurrentValues);
@@ -30,18 +30,22 @@ const Conversion: NextPage<Props> = ({ id }) => {
     (speedType) => speedType.id === resultTypeId
   );
 
-  const adjustDistances = () => {
+  const swapDistances = () => {
     if (inputTypeId === "distance-time" && inputDistance !== null) {
       setResultDistance(inputDistance);
     }
     if (resultTypeId === "distance-time" && resultDistance !== null) {
-      setInputDistance(resultDistance);
+      changedInputDistance (resultDistance);
     }
   };
 
-  const getAltSpeedTypes= () => {
-    return speedTypes.filter(speedType => speedType.id !== inputTypeId && speedType.id !== resultTypeId)
-  }
+  const getAltSpeedTypes = (thisSpeedType: SpeedType) => {
+    return speedTypes.filter(
+      (speedType) =>
+        (speedType.id !== inputTypeId && speedType.id !== resultTypeId) ||
+        (speedType.id !== thisSpeedType.id && speedType.id === "distance-time")
+    );
+  };
 
   if (!inputType || !resultType) {
     return <p>Error</p>;
@@ -64,7 +68,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
               {inputType.inputComponent()}
             </fieldset>
           </div>
-          <AlternativeButtons resultSpeedType={resultType} speedTypes={getAltSpeedTypes()} />
+          <AlternativeButtons resultSpeedType={resultType} speedTypes={getAltSpeedTypes(inputType)} />
         </div>
 
         <div className={styles.switchContainer}>
@@ -78,7 +82,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
               height={64}
               width={64}
               alt="Switch direction of calculation"
-              onClick={adjustDistances}
+              onClick={swapDistances}
             />
           </Link>
         </div>
@@ -92,7 +96,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
               {resultType.resultComponent({ canonicalKph })}
             </fieldset>
           </div>
-          <AlternativeButtons inputSpeedType={inputType} speedTypes={getAltSpeedTypes()} />
+          <AlternativeButtons inputSpeedType={inputType} speedTypes={getAltSpeedTypes(resultType)} />
         </div>
       </div>
     </>
