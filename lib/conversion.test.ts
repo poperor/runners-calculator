@@ -57,7 +57,7 @@ test('2 min 30 per km to be 13.1 kph (Bislett !)', () => {
 })
 
 test('6.9 mph to be 11.10 rounded', () => {
-    expect(+fromMph(6.9).toFixed(2)).toBe(11.10)
+    expect(+fromMph("6.9").toFixed(2)).toBe(11.10)
 })
 
 test('7 min per miles to be 13.79 kph rounded', () => {
