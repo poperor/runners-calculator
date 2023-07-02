@@ -4,12 +4,11 @@ import utilityStyles from "../../styles/utility.module.css";
 import { CurrentValues } from "../../context/current-values";
 
 export const KphInput = () => {
-  const { setInputDistance, kph, changedKph } = useContext(CurrentValues);
+  const { kph, changedKph } = useContext(CurrentValues);
 
   const onChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const kph = event.currentTarget.value.replace(/[^0-9.]/g, "");
     changedKph(kph);
-    setInputDistance(Number.parseFloat(kph) * 1000);
   };
 
   const leaveFieldOnEnter = (e: KeyboardEvent<HTMLInputElement>) => {

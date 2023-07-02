@@ -4,21 +4,19 @@ import utilityStyles from "../../styles/utility.module.css"
 import { CurrentValues } from "../../context/current-values";
 
 export const PacePerKmInput = () => {
-  const { setInputDistance, pacePerKm, changedPacePerKm } = useContext(CurrentValues);
+  const { pacePerKm, changedPacePerKm } = useContext(CurrentValues);
   
   
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const min = event.currentTarget.value.replace(/[^0-9]/g, "");
     const newPacePerKm = { ...pacePerKm, min };
     changedPacePerKm(newPacePerKm);
-    setInputDistance(1000);
   };
   
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const sec = event.currentTarget.value.replace(/[^0-9]/g, "");
     const newPacePerKm = { ...pacePerKm, sec };
     changedPacePerKm(newPacePerKm);
-    setInputDistance(1000);
   };
 
   const leaveFieldOnEnter = (e: KeyboardEvent<HTMLInputElement>) => {
