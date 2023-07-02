@@ -13,7 +13,7 @@ export const PacePerMileInput = () => {
   };
 
   const onSecChange = (event: React.FormEvent<HTMLInputElement>): void => {
-    const sec = event.currentTarget.value.replace(/[^0-9]/g, "");
+    const sec = event.currentTarget.value.replace(/[^.0-9]/g, "");
     const newPacePerMile = { ...pacePerMile, sec };
     changedPacePerMile(newPacePerMile);
   };

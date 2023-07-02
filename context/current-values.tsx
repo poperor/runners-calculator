@@ -2,13 +2,14 @@
 // TS: https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/context/
 
 import { createContext, useState, Dispatch, SetStateAction } from "react";
-import { PacePerKm, PacePerMile, fromKph, fromMph, fromPacePerKm, fromPacePerMile, toKph, toMph, toPacePerKm, toPacePerMile } from "../lib/conversion";
+import { DistanceTime, PacePerKm, PacePerMile, fromDistanceTime, fromKph, fromMph, fromPacePerKm, fromPacePerMile, toDistanceTime, toKph, toMph, toPacePerKm, toPacePerMile } from "../lib/conversion";
 
 type Context = {
   canonicalKph: number;
   setCanonicalKph: Dispatch<SetStateAction<number>>;
   inputDistance: number | null;
   setInputDistance: Dispatch<SetStateAction<number | null>>;
+  changedInputDistance: (inputDistance: number | null) => void;
   resultDistance: number;
   setResultDistance: Dispatch<SetStateAction<number>>;
   pacePerKm: PacePerKm;
@@ -19,6 +20,8 @@ type Context = {
   changedKph: (kph: string | null) => void;
   mph: string | null;
   changedMph: (mph: string | null) => void;
+  distanceTime: DistanceTime;
+  changedDistanceTime: (distanceTime: DistanceTime) => void;
 };
 type Props = {
   children: React.ReactNode;
@@ -34,6 +37,7 @@ function Context({ children }: Props) {
   const [pacePerMile, setPacePerMile] = useState<PacePerMile>({ min: null, sec: null });
   const [kph, setKph] = useState<string | null>(null);
   const [mph, setMph] = useState<string | null>(null);
+  const [distanceTime, setDistanceTime] = useState<DistanceTime>({ distance: null, hrs: null, min: null, sec: null });
 
   const changedPacePerMile = (pacePerMile: PacePerMile) => {
     setPacePerMile(pacePerMile);
@@ -69,6 +73,23 @@ function Context({ children }: Props) {
     setKph(toKph(newCanonicalKph));
   }
 
+  const changedDistanceTime = (distanceTime: DistanceTime) => {
+    setDistanceTime(distanceTime);
+    const newCanonicalKph = fromDistanceTime(distanceTime);
+    setCanonicalKph(newCanonicalKph);
+    setPacePerKm(toPacePerKm(newCanonicalKph));
+    setPacePerMile(toPacePerMile(newCanonicalKph));
+    setKph(toKph(newCanonicalKph));
+    setMph(toMph(newCanonicalKph));
+  }
+
+  const changedInputDistance = (inputDistance: number | null) => {
+    setInputDistance(inputDistance);
+    const distanceTime = toDistanceTime(canonicalKph, inputDistance);
+    setDistanceTime(distanceTime);
+  }
+
+
   return (
     <CurrentValues.Provider
       value={{
@@ -76,6 +97,7 @@ function Context({ children }: Props) {
         setCanonicalKph,
         inputDistance,
         setInputDistance,
+        changedInputDistance,
         resultDistance,
         setResultDistance,
         pacePerKm,
@@ -86,6 +108,8 @@ function Context({ children }: Props) {
         changedKph,
         mph,
         changedMph,
+        distanceTime,
+        changedDistanceTime,
       }}
     >
       {children}

@@ -18,7 +18,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
   const {
     canonicalKph,
     inputDistance,
-    setInputDistance,
+    changedInputDistance,
     resultDistance,
     setResultDistance,
   } = useContext(CurrentValues);
@@ -30,12 +30,12 @@ const Conversion: NextPage<Props> = ({ id }) => {
     (speedType) => speedType.id === resultTypeId
   );
 
-  const adjustDistances = () => {
+  const swapDistances = () => {
     if (inputTypeId === "distance-time" && inputDistance !== null) {
       setResultDistance(inputDistance);
     }
     if (resultTypeId === "distance-time" && resultDistance !== null) {
-      setInputDistance(resultDistance);
+      changedInputDistance (resultDistance);
     }
   };
 
@@ -82,7 +82,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
               height={64}
               width={64}
               alt="Switch direction of calculation"
-              onClick={adjustDistances}
+              onClick={swapDistances}
             />
           </Link>
         </div>
