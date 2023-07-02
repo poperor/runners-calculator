@@ -1,22 +1,15 @@
-import { useState, useContext ,KeyboardEvent } from "react";
+import { useContext ,KeyboardEvent } from "react";
 import styles from "./input.module.css";
 import utilityStyles from "../../styles/utility.module.css";
-import { fromMph, toMph } from "../../lib/conversion";
 import { CurrentValues } from "../../context/current-values";
 
 export const MphInput = () => {
-  const { canonicalKph, setCanonicalKph } = useContext(CurrentValues);
-  const currentMph = canonicalKph ? toMph(canonicalKph) : null;
-  const [mph, setMph] = useState(currentMph?.toString() || null);
-  const numericMph = mph ? Number(mph) : null;
-  if (currentMph !== numericMph) {  
-    setMph(currentMph?.toString() || null);
-  }
+  const { mph, changedMph } = useContext(CurrentValues);
+
 
   const onChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const mph = event.currentTarget.value.replace(/[^0-9.]/g, "");
-    setMph(mph);
-    setCanonicalKph(fromMph(Number.parseFloat(mph)));
+    changedMph(mph);
   };
 
   const leaveFieldOnEnter = (e: KeyboardEvent<HTMLInputElement>) => {

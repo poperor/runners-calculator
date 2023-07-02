@@ -13,19 +13,19 @@ import {
 } from './conversion'
 
 test('rounds kph correctly', () => {
-    expect(toKph(13.46576)).toBe(13.47)
+    expect(toKph(13.46576)).toBe("13.47")
 })
 
 test('rounds kph without integer without .0 at end', () => {
-    expect(toKph(13)).toBe(13)
+    expect(toKph(13)).toBe("13")
 })
 
 test('rounds kph without integer without .0 at end', () => {
-    expect(toKph(13.0)).toBe(13)
+    expect(toKph(13.0)).toBe("13")
 })
 
 test('rounds kph without integer without .0 at end', () => {
-    expect(toKph(0)).toBe(0)
+    expect(toKph(0)).toBe("0")
 })
 
 test('6 min per km to be 10 kph', () => {
@@ -57,7 +57,7 @@ test('2 min 30 per km to be 13.1 kph (Bislett !)', () => {
 })
 
 test('6.9 mph to be 11.10 rounded', () => {
-    expect(+fromMph(6.9).toFixed(2)).toBe(11.10)
+    expect(+fromMph("6.9").toFixed(2)).toBe(11.10)
 })
 
 test('7 min per miles to be 13.79 kph rounded', () => {
@@ -81,7 +81,7 @@ test('13.333333333333334 kph to 2 min 27 sec per 546 m (Bislett!)', () => {
 })
 
 test('11.10 kph to be 6.9 mph', () => {
-    expect(+toMph(11.1).toFixed(2)).toBe(6.9)
+    expect(+Number(toMph(11.1)).toFixed(2)).toBe(6.9)
 })
 
 test('13.79 kph to 7 min per mile', () => {
