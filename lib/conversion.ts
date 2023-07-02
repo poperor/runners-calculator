@@ -37,7 +37,7 @@ export interface DistanceInYardsTime {
 const KphMphRatio = 1.609344
 const YardsPerMile = 1760
 
-export const fromKph = (kph: number): number => kph 
+export const fromKph = (kph: string|null): number => Number(kph) 
 
 export const fromPacePerKm = (pacePerKm: PacePerKm): number => {
     const min = pacePerKm.min !== null ? pacePerKm.min : 0
@@ -62,7 +62,7 @@ export const fromDistanceTime = (distanceTime: DistanceTime): number => {
     return (3600 / totalSec) * distanceInKm
 }
 
-export const fromMph = (mph: number): number => mph * KphMphRatio
+export const fromMph = (mph: string|null): number => Number(mph) * KphMphRatio
 
 export const fromPacePerMile = (pacePerMile: PacePerMile): number => {
     const min = pacePerMile.min !== null ? pacePerMile.min : 0
@@ -84,11 +84,11 @@ export const fromDistanceInYardsTime = (minutesPerYards: DistanceInYardsTime): n
     return (3600 / sec) * distanceInMiles * KphMphRatio
 }
 
-export const toKph = (canonicalKph: number): number => +canonicalKph.toFixed(2)
+export const toKph = (canonicalKph: number): string => (+canonicalKph.toFixed(2)).toString()
 
-export const toPacePerKm = (kph: number): PacePerKm | undefined => {
+export const toPacePerKm = (kph: number): PacePerKm  => {
     if (!kph) {
-        return undefined
+        return {min: null, sec: null}
     }
     const secPerKm = 3600 / kph
     return {
@@ -115,11 +115,11 @@ export const toDistanceTime = (kph: number, distance: number | null): DistanceTi
     }
 }
 
-export const toMph = (canonicalKph: number): number => canonicalKph / KphMphRatio
+export const toMph = (canonicalKph: number): string => (canonicalKph / KphMphRatio).toFixed(2).toString()
 
-export const toPacePerMile = (kph: number): PacePerMile | undefined => {
+export const toPacePerMile = (kph: number): PacePerMile => {
     if (!kph) {
-        return undefined
+        return {min: null, sec: null}
     }
     const secPerMile = (3600 / kph) * KphMphRatio
     return {
