@@ -7,8 +7,9 @@ export interface ResultProps {
 
 export interface AlternativeProps {
     speedTypes: SpeedType[]
-    inputSpeedType?: SpeedType
-    resultSpeedType?: SpeedType
+    inputSpeedType: SpeedType
+    resultSpeedType: SpeedType
+    role: "input" | "result"
 }
 
 export interface PacePerKm {
