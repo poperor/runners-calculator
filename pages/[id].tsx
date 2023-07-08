@@ -67,8 +67,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
         <div className={styles.inputContainer}>
           <div className={styles.inputComponent}>
             <fieldset className={styles.inputFieldset}>
-              <legend className={styles.boxLegend}>
-                {/* {upperCaseFirst(inputType.name)} */}
+              <legend>
                 <AlternativesSelect
                   inputSpeedType={inputType}
                   resultSpeedType={resultType}
@@ -86,11 +85,11 @@ const Conversion: NextPage<Props> = ({ id }) => {
             className={styles.switchLink}
             href={`${resultTypeId}-to-${inputTypeId}`}
           >
-            <Image
+            <Image className={styles.switchImage}
               priority
               src={switcharrows}
-              height={64}
-              width={64}
+              // height={64}
+              // width={64}
               alt="Switch direction of calculation"
               onClick={swapDistances}
             />
@@ -99,8 +98,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
         <div className={styles.resultContainer}>
           <div className={styles.resultComponent}>
             <fieldset className={styles.resultFieldset}>
-              <legend className={styles.boxLegend}>
-                {/* {upperCaseFirst(resultType.name)} */}
+              <legend>
                 <AlternativesSelect
                   inputSpeedType={inputType}
                   resultSpeedType={resultType}

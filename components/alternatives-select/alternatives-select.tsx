@@ -1,5 +1,6 @@
 import { AlternativeProps } from "../../lib/conversion";
 import { useRouter } from "next/router";
+import styles from "./alternatives-select.module.css";
 
 export const AlternativesSelect = ({
   inputSpeedType,
@@ -14,7 +15,7 @@ export const AlternativesSelect = ({
   };
   const defaultValue = `${inputSpeedType.id}-to-${resultSpeedType.id}`;
   return (
-    <select value={defaultValue} onChange={handleChange}>
+    <select className={styles.select} value={defaultValue} onChange={handleChange}>
       <optgroup>
         {speedTypes.map((speedType) => {
           let href;
