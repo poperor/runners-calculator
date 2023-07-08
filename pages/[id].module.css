@@ -12,27 +12,16 @@
 .inputContainer,
 .resultContainer {
   display: flex;
+  margin-top: 0.5em;
 }
 
 .inputComponent,
 .resultComponent {
-  flex: 80%;
-}
-
-.inputAlternativesContainer,
-.resultAlternativesContainer {
-  flex: 20%;
+  flex: auto;
 }
 
 .inputContainer {
-  margin-top: 3rem;
-}
-
-legend.boxLegend {
-  color: white;
-  font-size: 1.6rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  margin-top: 2rem;
 }
 
 .convHeader {
@@ -41,42 +30,26 @@ legend.boxLegend {
 
 .switchContainer {
   margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
-legend.boxLegend optgroup {
-  font-size: 1.6rem;
-};
-
-legend.boxLegend ::selection {
-  font-size: 1.6rem;
-};
-
-.speedTypeOptions ::selection {
-  font-size: 1.6rem;
-};
-
 .switchLink {
-  display: inline-block;
   text-align: center;
+  display: block;
 }
 
 @media only screen and (max-width: 480px) {
   .convHeader {
     font-size: 1rem;
   }
+
   .inputFieldset,
   .resultFieldset {
     height: 6.5em;
-    margin-top: 2rem;
   }
+
   legend.boxLegend {
     font-size: 1rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-
-  legend.boxLegend select option {
-    font-size: 1rem;
-  };
 }
