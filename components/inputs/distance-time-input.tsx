@@ -1,23 +1,23 @@
-import { useState, useContext, KeyboardEvent } from "react";
+import { useContext, KeyboardEvent } from "react";
 import styles from "./input.module.css";
 import utilityStyles from "../../styles/utility.module.css";
 import { CurrentValues } from "../../context/current-values";
 
 export const DistanceTimeInput = () => {
-  const {
-    canonicalKph,
-    setCanonicalKph,
-    distanceTime,
-    changedDistanceTime,
-    inputDistance,
-    setInputDistance,
-  } = useContext(CurrentValues);
+  const { distanceTime, changedDistanceTime, setInputDistance } =
+    useContext(CurrentValues);
 
   const onDistanceChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const distance = event.currentTarget.value.replace(/[^0-9]/g, "");
     const newDistanceTime = { ...distanceTime, distance };
     changedDistanceTime(newDistanceTime);
     setInputDistance(Number(distance));
+  };
+
+  const onHrsChange = (event: React.FormEvent<HTMLInputElement>): void => {
+    const hrs = event.currentTarget.value.replace(/[^0-9]/g, "");
+    const newDistanceTime = { ...distanceTime, hrs };
+    changedDistanceTime(newDistanceTime);
   };
 
   const onMinChange = (event: React.FormEvent<HTMLInputElement>): void => {
@@ -52,6 +52,20 @@ export const DistanceTimeInput = () => {
           value={distanceTime?.distance || ""}
         />{" "}
       </div>
+      {(Number(distanceTime.hrs) > 0 || Number(distanceTime.distance) > 10000) && (
+        <div className={styles.timeinputbox}>
+          <label className={styles.timelabel} htmlFor="hrs">
+            hrs
+          </label>
+          <input
+            id="hrs"
+            className={styles.timeinput}
+            type="text"
+            onChange={onHrsChange}
+            value={distanceTime?.hrs || ""}
+          />{" "}
+        </div>
+      )}
       <div className={styles.timeinputbox}>
         <label className={styles.timelabel} htmlFor="minutes">
           min
