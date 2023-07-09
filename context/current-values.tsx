@@ -45,6 +45,7 @@ function Context({ children }: Props) {
     setCanonicalKph(newCanonicalKph);
     setPacePerKm(toPacePerKm(newCanonicalKph));
     setKph(toKph(newCanonicalKph));
+    setMph(toMph(newCanonicalKph));
   }
 
   const changedPacePerKm = (pacePerKm: PacePerKm) => {
@@ -53,6 +54,7 @@ function Context({ children }: Props) {
     setCanonicalKph(newCanonicalKph);
     setPacePerMile(toPacePerMile(newCanonicalKph));
     setKph(toKph(newCanonicalKph));
+    setMph(toMph(newCanonicalKph));
   } 
 
   const changedKph = (kph: string | null) => {

@@ -50,10 +50,10 @@
   font-size: 4rem;
 }
 
-.title,
-.description {
+.title {
   text-align: center;
 }
+<<<<<<< Updated upstream
 
 .description {
   line-height: 1.5;
@@ -119,3 +119,5 @@
     flex-direction: column;
   }
 }
+=======
+>>>>>>> Stashed changes

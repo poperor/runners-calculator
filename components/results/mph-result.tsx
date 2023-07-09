@@ -6,7 +6,7 @@ export const MphResult = ({ canonicalKph }: ResultProps) => {
   const mph = toMph(canonicalKph);
   return (
     <div className={`${utilityStyles.verticalAlign} ${resultStyles.result}`}>
-      {Number(mph) > 0  && <div>{Number(mph).toFixed(2)}</div>}
+      {Number(mph) > 0  && <div>{Number(mph).toFixed(1)}</div>}
     </div>
   );
 };
