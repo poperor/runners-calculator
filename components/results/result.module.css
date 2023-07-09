@@ -27,7 +27,7 @@
 
 @media only screen and (max-width: 480px) {
     .result {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 
     .distanceinputbox {
@@ -35,7 +35,7 @@
     }
     
     .distanceinput {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         width: 5rem;
     }
     
