@@ -10,7 +10,6 @@ export const AlternativesSelect = ({
 }: AlternativeProps) => {
   const router = useRouter();
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(event.target.value);
     router.push(`/${event.target.value}`)
   };
   const defaultValue = `${inputSpeedType.id}-to-${resultSpeedType.id}`;
