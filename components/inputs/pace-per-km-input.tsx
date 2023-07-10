@@ -35,6 +35,7 @@ export const PacePerKmInput = () => {
           id="minutes"
           className={styles.timeinput}
           type="text"
+          inputMode="numeric"
           onChange={onMinChange}
           value={pacePerKm?.min || ""}
         />{" "}
@@ -47,6 +48,7 @@ export const PacePerKmInput = () => {
           id="seconds"
           className={styles.timeinput}
           type="text"
+          inputMode="numeric"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
           value={pacePerKm?.sec || ""}

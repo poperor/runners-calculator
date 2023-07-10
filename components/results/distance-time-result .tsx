@@ -1,8 +1,5 @@
 import { useContext } from "react";
-import {
-  ResultProps,
-  toDistanceTime,
-} from "../../lib/conversion";
+import { ResultProps, toDistanceTime } from "../../lib/conversion";
 import resultStyles from "./result.module.css";
 import utilityStyles from "../../styles/utility.module.css";
 import withLeadZeroes from "../../lib/with-lead-zeroes";
@@ -27,15 +24,24 @@ export const DistanceTimeResult = ({ canonicalKph }: ResultProps) => {
           id="distance"
           className={styles.distanceinput}
           type="number"
+          inputMode="numeric"
           onChange={onDistanceChange}
           value={resultDistance || ""}
         />{" "}
       </div>
-      {distanceTime && <div className={styles.distancetimebox}>
-        {Number(distanceTime.hrs) > 0 && <span>{withLeadZeroes(Number(distanceTime.hrs))}:</span>}
-        {Number(distanceTime.min) > 0 && <span>{withLeadZeroes(Number(distanceTime.min))}:</span>}
-        {Number(distanceTime.sec) > 0 && <span>{withLeadZeroes(Number(distanceTime.sec))} </span>}
-      </div>}
+      {distanceTime && (
+        <div className={styles.distancetimebox}>
+          {Number(distanceTime.hrs) > 0 && (
+            <span>{withLeadZeroes(Number(distanceTime.hrs))}:</span>
+          )}
+          {Number(distanceTime.min) > 0 && (
+            <span>{withLeadZeroes(Number(distanceTime.min))}:</span>
+          )}
+          {Number(distanceTime.sec) > 0 && (
+            <span>{withLeadZeroes(Number(distanceTime.sec))} </span>
+          )}
+        </div>
+      )}
     </div>
   );
 };

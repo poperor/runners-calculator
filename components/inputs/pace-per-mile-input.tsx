@@ -19,8 +19,8 @@ export const PacePerMileInput = () => {
   };
 
   const leaveFieldOnEnter = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      e.currentTarget.blur()
+    if (e.key === "Enter") {
+      e.currentTarget.blur();
     }
   };
 
@@ -34,6 +34,7 @@ export const PacePerMileInput = () => {
           id="minutes"
           className={styles.timeinput}
           type="text"
+          inputMode="numeric"
           onChange={onMinChange}
           value={pacePerMile?.min || ""}
         />{" "}
@@ -46,6 +47,7 @@ export const PacePerMileInput = () => {
           id="seconds"
           className={styles.timeinput}
           type="text"
+          inputMode="numeric"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
           value={pacePerMile?.sec || ""}

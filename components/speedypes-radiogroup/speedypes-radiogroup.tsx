@@ -24,17 +24,18 @@ export const SpeedtypesRadiogroup = ({
   return (
     <div className={styles.speedTypesRadiogroup}>
       {speedTypes.map((speedType) => {
+        const id = `${role}$-${speedType.id}`
         return (
           <div key={speedType.id} className={styles.speedType}>
             <input
               type="radio"
-              id={speedType.id}
+              id={id}
               name={role}
               value={speedType.id}
               onChange={handleChange}
               disabled={disabledInputId === speedType.id}
             />
-            <label htmlFor={speedType.id}>{speedType.name}</label>
+            <label htmlFor={id}>{speedType.name}</label>
           </div>
         );
       })}

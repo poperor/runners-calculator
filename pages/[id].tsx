@@ -55,12 +55,13 @@ const Conversion: NextPage<Props> = ({ id }) => {
   if (!inputType || !resultType) {
     return <p>Error</p>;
   }
-  const title = upperCaseFirst(`${inputType.name} to ${resultType.name} - Runner's Calculator`);
+  const title = upperCaseFirst(`${inputType.name} to ${resultType.name}`);
+  const fullTitle = upperCaseFirst(`${title} - Runner's Calculator`);
   
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{fullTitle}</title>
         <meta name="og:title" content={title} />
       </Head>
       <div>

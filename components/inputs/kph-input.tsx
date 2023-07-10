@@ -1,4 +1,4 @@
-import { useContext ,KeyboardEvent } from "react";
+import { useContext, KeyboardEvent } from "react";
 import styles from "./input.module.css";
 import utilityStyles from "../../styles/utility.module.css";
 import { CurrentValues } from "../../context/current-values";

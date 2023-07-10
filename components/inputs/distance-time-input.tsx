@@ -48,11 +48,13 @@ export const DistanceTimeInput = () => {
           id="distance"
           className={styles.distanceinput}
           type="text"
+          inputMode="numeric"
           onChange={onDistanceChange}
           value={distanceTime?.distance || ""}
         />{" "}
       </div>
-      {(Number(distanceTime.hrs) > 0 || Number(distanceTime.distance) > 10000) && (
+      {(Number(distanceTime.hrs) > 0 ||
+        Number(distanceTime.distance) > 10000) && (
         <div className={styles.timeinputbox}>
           <label className={styles.timelabel} htmlFor="hrs">
             hrs
@@ -61,6 +63,7 @@ export const DistanceTimeInput = () => {
             id="hrs"
             className={styles.timeinput}
             type="text"
+            inputMode="numeric"
             onChange={onHrsChange}
             value={distanceTime?.hrs || ""}
           />{" "}
@@ -74,6 +77,7 @@ export const DistanceTimeInput = () => {
           id="minutes"
           className={styles.timeinput}
           type="text"
+          inputMode="numeric"
           onChange={onMinChange}
           value={distanceTime?.min || ""}
         />{" "}
@@ -86,6 +90,7 @@ export const DistanceTimeInput = () => {
           id="seconds"
           className={styles.timeinput}
           type="text"
+          inputMode="numeric"
           onChange={onSecChange}
           onKeyDown={leaveFieldOnEnter}
           value={distanceTime?.sec || ""}
