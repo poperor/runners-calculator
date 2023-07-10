@@ -1,36 +1,47 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { SpeedtypesRadiogroup } from "../components/speedypes-radiogroup/speedypes-radiogroup";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import styles from "./index.module.css";
-import Link from 'next/link'
-import { getAllCalculatorPaths } from "../lib/config";
 
 const Home: NextPage = () => {
-  const paths = getAllCalculatorPaths()
-  const hrefs = paths.map(path => `./${path.params.id}`)
-  const title = "Runner's caclulator"
+  const heading = "Effortlessly convert between various paces and speeds";
+  const title = `${heading} - Runner's Calculator`;
+  const [selectedFromSpeedTypeId, setSelectedFromSpeedTypeId] = useState<string>("");
+  const [selectedToSpeedTypeId, setSelectedToSpeedTypeId] = useState<string>("");
+  const router = useRouter();
+  useEffect(() => {
+    if (selectedFromSpeedTypeId && selectedToSpeedTypeId) {
+      const path = `${selectedFromSpeedTypeId}-to-${selectedToSpeedTypeId}`;
+      router.push(path);
+    }
+  }, [selectedFromSpeedTypeId, selectedToSpeedTypeId]);
+
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>{title}</title>
         <meta name="description" content="Runner's caclulator" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1>{title}</h1>
-
-        <p>
-          Convert freely between pace as minutes per kilometer or mile and speed in kilometers per hour or miles per hour. You
-          can also find pace and speed for the time used on any given distance or lap. 
-        </p>
-        {hrefs.map(href => <div key={href}><Link href={href}>{href}</Link></div>)}
-        
-      </main>
-
-      <footer className={styles.footer}>
-        footer
-      </footer>
-    </div>
+      <div>
+        <h1 className={styles.header}>{heading}</h1>
+        <h2 className={styles.header2}>From:</h2>
+        <SpeedtypesRadiogroup
+          disabledInputId={selectedToSpeedTypeId}
+          setSelectedSpeedTypeId={setSelectedFromSpeedTypeId}
+          role="from"
+        />
+        <h2 className={styles.header2}>To:</h2>
+        <SpeedtypesRadiogroup
+          disabledInputId={selectedFromSpeedTypeId}
+          setSelectedSpeedTypeId={setSelectedToSpeedTypeId}
+          role="to"
+        />
+      </div>
+    </>
   );
 };
 

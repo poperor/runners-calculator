@@ -56,6 +56,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
     return <p>Error</p>;
   }
   const title = upperCaseFirst(`${inputType.name} to ${resultType.name} - Runner's Calculator`);
+  
   return (
     <>
       <Head>
