@@ -34,10 +34,12 @@ export const DistanceTimeResult = ({ canonicalKph }: ResultProps) => {
           {Number(distanceTime.hrs) > 0 && (
             <span>{withLeadZeroes(Number(distanceTime.hrs))}:</span>
           )}
-          {Number(distanceTime.min) > 0 && (
+          {(Number(distanceTime.hrs) > 0 || Number(distanceTime.min) > 0) && (
             <span>{withLeadZeroes(Number(distanceTime.min))}:</span>
           )}
-          {Number(distanceTime.sec) > 0 && (
+          {(Number(distanceTime.hrs) > 0 ||
+            Number(distanceTime.min) > 0 ||
+            Number(distanceTime.sec) > 0) && (
             <span>{withLeadZeroes(Number(distanceTime.sec))} </span>
           )}
         </div>
