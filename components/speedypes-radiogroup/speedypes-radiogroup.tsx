@@ -1,20 +1,20 @@
-import { useRouter } from "next/router";
 import styles from "./speedtypes-readiogroup.module.css";
 import { Dispatch, SetStateAction } from "react";
 import { speedTypes } from "../../lib/config";
 
 export interface SpeedtypesRadiogroupProps {
+  selectedSpeedTypeId: string;
   disabledInputId: string;
   setSelectedSpeedTypeId: Dispatch<SetStateAction<string>>;
   role: string;
 }
 
 export const SpeedtypesRadiogroup = ({
+  selectedSpeedTypeId,
   disabledInputId,
   setSelectedSpeedTypeId,
   role,
 }: SpeedtypesRadiogroupProps) => {
-  const router = useRouter();
 
   const handleChange = (event: { target: { value: any } }) => {
     const speedTypeId = event.target.value;
@@ -33,6 +33,7 @@ export const SpeedtypesRadiogroup = ({
               name={role}
               value={speedType.id}
               onChange={handleChange}
+              checked={selectedSpeedTypeId === speedType.id}
               disabled={disabledInputId === speedType.id}
             />
             <label htmlFor={id}>{speedType.name}</label>

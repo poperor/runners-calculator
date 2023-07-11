@@ -8,8 +8,10 @@ import styles from "./index.module.css";
 const Home: NextPage = () => {
   const heading = "Effortlessly convert between various paces and speeds";
   const title = `${heading} - Runner's Calculator`;
-  const [selectedFromSpeedTypeId, setSelectedFromSpeedTypeId] = useState<string>("");
-  const [selectedToSpeedTypeId, setSelectedToSpeedTypeId] = useState<string>("");
+  const [selectedFromSpeedTypeId, setSelectedFromSpeedTypeId] =
+    useState<string>("");
+  const [selectedToSpeedTypeId, setSelectedToSpeedTypeId] =
+    useState<string>("");
   const router = useRouter();
   useEffect(() => {
     if (selectedFromSpeedTypeId && selectedToSpeedTypeId) {
@@ -30,13 +32,23 @@ const Home: NextPage = () => {
         <h1 className={styles.header}>{heading}</h1>
         <h2 className={styles.header2}>From:</h2>
         <SpeedtypesRadiogroup
-          disabledInputId={selectedToSpeedTypeId}
+          selectedSpeedTypeId={selectedFromSpeedTypeId}
+          disabledInputId={
+            selectedToSpeedTypeId !== "distance-time"
+              ? selectedToSpeedTypeId
+              : ""
+          }
           setSelectedSpeedTypeId={setSelectedFromSpeedTypeId}
           role="from"
-        />
+          />
         <h2 className={styles.header2}>To:</h2>
         <SpeedtypesRadiogroup
-          disabledInputId={selectedFromSpeedTypeId}
+          selectedSpeedTypeId={selectedToSpeedTypeId}
+          disabledInputId={
+            selectedFromSpeedTypeId !== "distance-time"
+              ? selectedFromSpeedTypeId
+              : ""
+          }
           setSelectedSpeedTypeId={setSelectedToSpeedTypeId}
           role="to"
         />
