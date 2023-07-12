@@ -1,12 +1,8 @@
-.calculator {
-  color: aliceblue;
-}
-
 .resultFieldset,
 .inputFieldset {
   height: 10em;
   position: relative;
-  border-radius: 25px;
+  border-radius: 5px;
 }
 
 .inputContainer,
@@ -56,7 +52,6 @@
   .switchImage {
     width: 3rem;
     height: 3rem;
-    margin: 0 auto;
   }
   
 }

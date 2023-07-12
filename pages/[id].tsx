@@ -69,7 +69,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
         <div className={styles.inputContainer}>
           <div className={styles.inputComponent}>
             <fieldset className={styles.inputFieldset}>
-              <legend>
+              <legend className={styles.legend}>
                 <AlternativesSelect
                   inputSpeedType={inputType}
                   resultSpeedType={resultType}

@@ -5,6 +5,7 @@
 .distanceinputbox {
     float:left;
     margin-right: 1.5rem;
+    margin-left: 0.4rem;
 }
 
 .distanceinput {
@@ -27,16 +28,17 @@
 
 @media only screen and (max-width: 480px) {
     .result {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .distanceinputbox {
         margin-right: 1rem;
+        margin-left: 0.2rem;
     }
     
     .distanceinput {
-        font-size: 1.5rem;
-        width: 5rem;
+        font-size: 1.2rem;
+        width: 4rem;
     }
     
     .distancetimebox {
@@ -45,6 +47,6 @@
     }
 
     .timelabel {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 }
