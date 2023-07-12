@@ -40,7 +40,7 @@ export const DistanceTimeInput = () => {
 
   return (
     <div className={utilityStyles.verticalAlign}>
-      <div className={styles.timeinputbox}>
+      <div className={styles.distanceinputbox}>
         <label className={styles.timelabel} htmlFor="distance">
           meters
         </label>

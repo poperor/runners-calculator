@@ -1,0 +1,14 @@
+.banner {
+    color: #D01B1B;
+    background-color: #95D2EC;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: bold;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+@media only screen and (max-width: 480px) {
+    .banner {
+        font-size: 1rem;
+    }
+  }
