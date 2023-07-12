@@ -41,7 +41,7 @@
 
 @media only screen and (max-width: 480px) {
   .convHeader {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   
   .inputFieldset,

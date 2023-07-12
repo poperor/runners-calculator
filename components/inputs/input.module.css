@@ -35,18 +35,18 @@
 
 @media only screen and (max-width: 480px) {
     .timelabel {
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 
     .timeinput {
-        font-size: 1.2rem;
-        width: 2.5rem;
+        font-size: 1.5rem;
+        width: 3.4rem;
     }
 
     
     .distanceinput {
-        font-size: 1.2rem;
-        width: 4rem;
+        font-size: 1.5rem;
+        width: 4.7rem;
     }
     
     .speedinput {

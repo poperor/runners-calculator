@@ -28,7 +28,7 @@
 
 @media only screen and (max-width: 480px) {
     .result {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     .distanceinputbox {
@@ -37,8 +37,8 @@
     }
     
     .distanceinput {
-        font-size: 1.2rem;
-        width: 4rem;
+        font-size: 1.5rem;
+        width: 4.7rem;
     }
     
     .distancetimebox {
@@ -47,6 +47,6 @@
     }
 
     .timelabel {
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 }
