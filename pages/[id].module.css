@@ -22,6 +22,7 @@
 
 .convHeader {
   font-size: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .switchContainer {
@@ -42,6 +43,7 @@
 @media only screen and (max-width: 480px) {
   .convHeader {
     font-size: 1.5rem;
+    margin-top: 2rem;
   }
   
   .inputFieldset,

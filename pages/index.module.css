@@ -33,19 +33,24 @@
   flex-grow: 1;
 }
 
-.header,
+.header {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+}
+
 .header2 {
+  margin: 1rem 0 0.5rem 0;
   font-size: 1.5rem;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+@media (max-width: 480px) {
+
+  .header {
+    font-size: 1.5rem;
+    margin-top: 2rem;
   }
-  
-.header,
-.header2 {
-    font-size: 1rem;
+
+  .header2 {
+    font-size: 1.5rem;
   }
 }

@@ -28,6 +28,7 @@ export const SpeedtypesRadiogroup = ({
         return (
           <div key={speedType.id} className={styles.speedType}>
             <input
+              className={styles.speedTypeInput}
               type="radio"
               id={id}
               name={role}
