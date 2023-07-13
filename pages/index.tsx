@@ -29,7 +29,7 @@ const Home: NextPage = () => {
       </Head>
 
       <div>
-        <h1 className={styles.header}>{heading}</h1>
+        <h1 className={styles.header1}>{heading}</h1>
         <h2 className={styles.header2}>From:</h2>
         <SpeedtypesRadiogroup
           selectedSpeedTypeId={selectedFromSpeedTypeId}
