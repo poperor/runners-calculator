@@ -3,12 +3,14 @@
   margin: auto;
   background-color: #001f3f;
   color: white;
+}
+
+.main {
   padding: 0.5rem 1.5rem 6rem 1.5rem;
 }
 
 @media only screen and (max-width: 480px) {
-  .container {
-    height: 100vh;
-    padding: 0.5rem 1rem 20rem 1rem;
+  .main {
+    padding: 0.5rem 0.5rem 6rem 0.5rem;
   }
 }
