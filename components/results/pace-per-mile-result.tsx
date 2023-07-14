@@ -1,6 +1,5 @@
 import { ResultProps, toPacePerMile } from "../../lib/conversion";
 import resultStyles from "./result.module.css";
-import utilityStyles from "../../styles/utility.module.css";
 import withLeadZeroes from "../../lib/with-lead-zeroes";
 
 export const PacePerMileResult = ({ canonicalKph }: ResultProps) => {
@@ -8,9 +7,7 @@ export const PacePerMileResult = ({ canonicalKph }: ResultProps) => {
   return (
     <div>
       {pacePerMile && (
-        <div
-          className={`${utilityStyles.verticalAlign} ${resultStyles.result}`}
-        >
+        <div className={resultStyles.result}>
           {Number(pacePerMile.min) > 0 && (
             <span>{withLeadZeroes(Number(pacePerMile.min))}:</span>
           )}

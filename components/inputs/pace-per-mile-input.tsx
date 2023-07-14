@@ -1,6 +1,5 @@
 import { useContext, KeyboardEvent } from "react";
 import styles from "./input.module.css";
-import utilityStyles from "../../styles/utility.module.css";
 import { CurrentValues } from "../../context/current-values";
 
 export const PacePerMileInput = () => {
@@ -25,7 +24,7 @@ export const PacePerMileInput = () => {
   };
 
   return (
-    <div className={utilityStyles.verticalAlign}>
+    <div>
       <div className={styles.timeinputbox}>
         <label className={styles.timelabel} htmlFor="minutes">
           min

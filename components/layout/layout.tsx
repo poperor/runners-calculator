@@ -26,7 +26,7 @@ export const Layout: React.FC<Props> = ({ children, title = siteTitle }) => {
 
       <div className={styles.container}>
         <Header />
-        <main>{children}</main>
+        <main className={styles.main}>{children}</main>
       </div>
     </>
   );

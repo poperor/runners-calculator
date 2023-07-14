@@ -1,11 +1,13 @@
 .header1 {
-  font-size: 1.5rem;
+  color: #00ABE4;
+  font-size: 2rem;
   margin-top: 2.5rem;
 }
 
 .header2 {
   margin: 1rem 0 0.5rem 0;
   font-size: 1.5rem;
+  color: #00ABE4;
 }
 
 @media (max-width: 480px) {

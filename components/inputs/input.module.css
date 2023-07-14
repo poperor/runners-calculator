@@ -4,7 +4,7 @@
 }
 
 .timeinputbox:first-child   {
-    margin-left: 0.4rem;
+    margin-left: 0.5rem;
 }
 
 .distanceinputbox {
@@ -58,7 +58,7 @@
     }
     
     .timeinputbox:first-child {
-        margin-left: 0.2rem;
+        margin-left: 0.4rem;
     }
 
     .distanceinputbox {

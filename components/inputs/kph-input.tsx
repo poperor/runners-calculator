@@ -1,6 +1,5 @@
 import { useContext, KeyboardEvent } from "react";
 import styles from "./input.module.css";
-import utilityStyles from "../../styles/utility.module.css";
 import { CurrentValues } from "../../context/current-values";
 
 export const KphInput = () => {
@@ -18,15 +17,17 @@ export const KphInput = () => {
   };
 
   return (
-    <div className={utilityStyles.verticalAlign}>
-      <input
-        className={styles.speedinput}
-        type="text"
-        inputMode="numeric"
-        value={kph || ""}
-        onChange={onChange}
-        onKeyDown={leaveFieldOnEnter}
-      />
+    <div>
+      <div className={styles.timeinputbox}>
+        <input
+          className={styles.speedinput}
+          type="text"
+          inputMode="numeric"
+          value={kph || ""}
+          onChange={onChange}
+          onKeyDown={leaveFieldOnEnter}
+        />
+      </div>
     </div>
   );
 };

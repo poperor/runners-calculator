@@ -1,7 +1,5 @@
 import { useContext } from "react";
 import { ResultProps, toDistanceTime } from "../../lib/conversion";
-import resultStyles from "./result.module.css";
-import utilityStyles from "../../styles/utility.module.css";
 import withLeadZeroes from "../../lib/with-lead-zeroes";
 import styles from "./result.module.css";
 import { CurrentValues } from "../../context/current-values";
@@ -15,7 +13,7 @@ export const DistanceTimeResult = ({ canonicalKph }: ResultProps) => {
   const distanceTime = toDistanceTime(canonicalKph, resultDistance);
 
   return (
-    <div className={`${utilityStyles.verticalAlign} ${resultStyles.result}`}>
+    <div className={styles.result}>
       <div className={styles.distanceinputbox}>
         <label className={styles.timelabel} htmlFor="distance">
           meters

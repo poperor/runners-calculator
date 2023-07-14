@@ -1,19 +1,23 @@
 .resultFieldset,
 .inputFieldset {
-  height: 10em;
+  height: 9rem;
   position: relative;
-  border-radius: 5px;
 }
 
 .inputContainer,
 .resultContainer {
   display: flex;
   margin-top: 0.5em;
+  border-color: #00ABE4;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+  background-color: #E9F1FA;
 }
 
 .inputComponent,
 .resultComponent {
-  flex: auto;
+  /* flex: auto; */
 }
 
 .inputContainer {
@@ -21,7 +25,8 @@
 }
 
 .convHeader {
-  font-size: 1.5rem;
+  color: #00ABE4;
+  font-size: 2rem;
   margin-top: 2.5rem;
 }
 
@@ -35,8 +40,8 @@
 }
 
 .switchImage {
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   margin: 0 auto;
 }
 
@@ -48,12 +53,12 @@
   
   .inputFieldset,
   .resultFieldset {
-    height: 6.5em;
+    height: 6.5rem;
   }
   
   .switchImage {
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
   }
   
 }

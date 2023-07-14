@@ -57,7 +57,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
   }
   const title = upperCaseFirst(`${inputType.name} to ${resultType.name}`);
   const fullTitle = upperCaseFirst(`${title} - Runner's Calculator`);
-  
+
   return (
     <>
       <Head>
@@ -68,17 +68,15 @@ const Conversion: NextPage<Props> = ({ id }) => {
         <h1 className={styles.convHeader}>{title}</h1>
         <div className={styles.inputContainer}>
           <div className={styles.inputComponent}>
-            <fieldset className={styles.inputFieldset}>
-              <legend className={styles.legend}>
-                <AlternativesSelect
-                  inputSpeedType={inputType}
-                  resultSpeedType={resultType}
-                  speedTypes={getAltSpeedTypes(resultType)}
-                  role="input"
-                />
-              </legend>
+            <div className={styles.inputFieldset}>
+              <AlternativesSelect
+                inputSpeedType={inputType}
+                resultSpeedType={resultType}
+                speedTypes={getAltSpeedTypes(resultType)}
+                role="input"
+              />
               {inputType.inputComponent()}
-            </fieldset>
+            </div>
           </div>
         </div>
 
@@ -87,11 +85,10 @@ const Conversion: NextPage<Props> = ({ id }) => {
             className={styles.switchLink}
             href={`${resultTypeId}-to-${inputTypeId}`}
           >
-            <Image className={styles.switchImage}
+            <Image
+              className={styles.switchImage}
               priority
               src={switcharrows}
-              // height={64}
-              // width={64}
               alt="Switch direction of calculation"
               onClick={swapDistances}
             />
@@ -99,17 +96,15 @@ const Conversion: NextPage<Props> = ({ id }) => {
         </div>
         <div className={styles.resultContainer}>
           <div className={styles.resultComponent}>
-            <fieldset className={styles.resultFieldset}>
-              <legend>
-                <AlternativesSelect
-                  inputSpeedType={inputType}
-                  resultSpeedType={resultType}
-                  speedTypes={getAltSpeedTypes(inputType)}
-                  role="result"
-                />
-              </legend>
+            <div className={styles.resultFieldset}>
+              <AlternativesSelect
+                inputSpeedType={inputType}
+                resultSpeedType={resultType}
+                speedTypes={getAltSpeedTypes(inputType)}
+                role="result"
+              />
               {resultType.resultComponent({ canonicalKph })}
-            </fieldset>
+            </div>
           </div>
         </div>
       </div>
