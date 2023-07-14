@@ -1,6 +1,6 @@
 .resultFieldset,
 .inputFieldset {
-  height: 9em;
+  height: 9rem;
   position: relative;
   border-radius: 5px;
   border-color: #D01B1B;
@@ -20,7 +20,7 @@
 
 .inputComponent,
 .resultComponent {
-  flex: auto;
+  /* flex: auto; */
 }
 
 .inputContainer {
@@ -55,7 +55,7 @@
   
   .inputFieldset,
   .resultFieldset {
-    height: 6.5em;
+    height: 6.5rem;
   }
   
   .switchImage {

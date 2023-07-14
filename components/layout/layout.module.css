@@ -12,5 +12,6 @@
 @media only screen and (max-width: 480px) {
   .main {
     padding: 0.5rem 0.5rem 6rem 0.5rem;
+    height:100vh;
   }
 }
