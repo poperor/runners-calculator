@@ -1,14 +1,21 @@
 .resultFieldset,
 .inputFieldset {
-  height: 10em;
+  height: 9em;
   position: relative;
   border-radius: 5px;
+  border-color: #D01B1B;
+  border-style: none;
+  background-color: #95D2EC;
 }
 
 .inputContainer,
 .resultContainer {
   display: flex;
   margin-top: 0.5em;
+  border-color: #D01B1B;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
 }
 
 .inputComponent,
@@ -42,7 +49,7 @@
 
 @media only screen and (max-width: 480px) {
   .convHeader {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-top: 2rem;
   }
   

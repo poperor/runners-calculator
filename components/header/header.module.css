@@ -5,14 +5,11 @@
     font-weight: bold;
     padding: 0;
     height: 4rem;
-    /* text-align:; */
+    border-bottom-color: #D01B1B;
+    border-bottom-style: solid;
 }
 
 .homeLink {
-    /* margin: 4rem 1rem 0 1rem; */
-    /* background-color: aqua; */
-    /* width: 50%;
-    margin: auto; */
     padding-top: 0.7rem;
     padding-left: 1rem;
 }
