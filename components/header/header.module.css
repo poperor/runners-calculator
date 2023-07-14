@@ -1,12 +1,12 @@
 .header {
-    color: #D01B1B;
-    background-color: #95D2EC;
+    color: white;
+    background-color: #00ABE4;
     font-size: 2rem;
     font-weight: bold;
     padding: 0;
     height: 4rem;
-    border-bottom-color: #D01B1B;
-    border-bottom-style: solid;
+    /* border-bottom-color: #D01B1B;
+    border-bottom-style: solid; */
 }
 
 .homeLink {
