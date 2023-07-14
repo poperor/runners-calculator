@@ -3,6 +3,7 @@
   margin: auto;
   background-color: #E9F1FA;
   color: rgba(0, 0, 0, 0.817);
+  height:100vh;
 }
 
 .main {
@@ -12,6 +13,5 @@
 @media only screen and (max-width: 480px) {
   .main {
     padding: 0.5rem 0.5rem 6rem 0.5rem;
-    height:100vh;
   }
 }
