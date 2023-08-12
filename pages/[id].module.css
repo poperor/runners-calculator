@@ -8,11 +8,11 @@
 .resultContainer {
   display: flex;
   margin-top: 0.5em;
-  border-color: #00ABE4;
+  border-color: rgb(173, 200, 230);
   border-style: solid;
-  border-width: thin;
   border-radius: 5px;
-  background-color: #E9F1FA;
+  background-color: #001f3f;
+;
 }
 
 .inputComponent,
@@ -25,7 +25,9 @@
 }
 
 .convHeader {
-  color: #00ABE4;
+  color:  white;
+  /* color:  #001f3f;
+; */
   font-size: 2rem;
   margin-top: 2.5rem;
 }
