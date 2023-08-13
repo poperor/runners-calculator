@@ -20,7 +20,7 @@ const About: NextPage = () => {
 
         <p className={styles.paragraph}>
           Runner's Calculator is a free tool for runners to find out what a given pace,
-          speed, and time might be in another unit of measurement - e.g you can see what
+          speed or time might be in another unit of measurement - e.g you can see what
           pace in kilometers per hour is in pace per mile.
         </p>
         <p className={styles.paragraph}>
