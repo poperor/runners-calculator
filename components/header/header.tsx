@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
         </div>
         <nav className={styles.nav}>
           <Link className={styles.homeLink} href="/">home</Link>
-          <Link className={styles.aboutLink} href="/">about</Link>
+          <Link className={styles.aboutLink} href="/about">about</Link>
         </nav>
     </header>
   );

@@ -1,0 +1,32 @@
+.about {
+  color: white;
+}
+
+.header1 {
+  font-size: 2rem;
+  margin-top: 2.5rem;
+}
+
+.paragraph {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.unitlist {
+  font-size: 1.2rem;
+}
+
+.aboutlink:link {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .header1 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  .paragraph {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+}
