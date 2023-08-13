@@ -29,6 +29,10 @@
     padding-left: 0.4rem;
 }
 
+.timeinput:focus {
+    outline: none;
+}
+
 .distanceinput {
     font-size: 2.5rem;
     width: 8rem;
@@ -37,6 +41,10 @@
     border-color: rgb(173, 200, 230);
     border-style: solid;
     padding-left: 0.4rem;
+}
+
+.distanceinput:focus {
+    outline: none;
 }
 
 .speedinput {

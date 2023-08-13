@@ -20,6 +20,10 @@
     border-style: solid
 }
 
+.distanceinput:focus {
+    outline: none;
+}
+
 .distancetimebox {
     float:left;
     margin-right: 1.5rem;

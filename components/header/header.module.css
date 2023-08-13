@@ -4,27 +4,46 @@
     /* background-image: linear-gradient( #001f3f;
 , #0089e4); */
     background-color: #001f3f;
-;
-    font-size: 2rem;
     font-weight: bold;
     padding: 0;
-    padding-top:1.2rem;
+    padding-top:1.6rem;
     height: 6rem;
     display: block;
     border-bottom-color: rgb(173, 200, 230);
     border-bottom-style: solid;
 }
 
-.homeLink {
+.logo {
+    font-size: 2rem;
     padding-left: 1rem;
+    font-style: italic;
+    float: left;
+}
+
+.nav {
+    float: right;
+    font-size: 1.2rem;
+    margin-top: -1rem;
+}
+
+.aboutLink {
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 @media only screen and (max-width: 480px) {
     .header {
         height: 4rem;
-        font-size: 1.5rem;
+        padding-top: 1rem;
     }
-}
-.homeLink {
-    padding-top: 0.7rem;
+    
+    .logo {
+        font-size: 1.5rem;
+        padding-left: 0.5rem;
+    }
+    
+    .nav {
+        font-size: 0.8rem;
+        margin-top: -0.5rem;
+    }
 }
