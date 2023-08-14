@@ -15,7 +15,6 @@ export const SpeedtypesRadiogroup = ({
   setSelectedSpeedTypeId,
   role,
 }: SpeedtypesRadiogroupProps) => {
-
   const handleChange = (event: { target: { value: any } }) => {
     const speedTypeId = event.target.value;
     setSelectedSpeedTypeId(speedTypeId);
@@ -23,24 +22,26 @@ export const SpeedtypesRadiogroup = ({
 
   return (
     <div className={styles.speedTypesRadiogroup}>
-      {speedTypes.map((speedType) => {
-        const id = `${role}$-${speedType.id}`
-        return (
-          <div key={speedType.id} className={styles.speedType}>
-            <input
-              className={styles.speedTypeInput}
-              type="radio"
-              id={id}
-              name={role}
-              value={speedType.id}
-              onChange={handleChange}
-              checked={selectedSpeedTypeId === speedType.id}
-              disabled={disabledInputId === speedType.id}
-            />
-            <label htmlFor={id}>{speedType.name}</label>
-          </div>
-        );
-      })}
+      <fieldset>
+        {speedTypes.map((speedType) => {
+          const id = `${role}$-${speedType.id}`;
+          return (
+            <div key={speedType.id} className={styles.speedType}>
+              <input
+                className={styles.speedTypeInput}
+                type="radio"
+                id={id}
+                name={role}
+                value={speedType.id}
+                onChange={handleChange}
+                checked={selectedSpeedTypeId === speedType.id}
+                disabled={disabledInputId === speedType.id}
+              />
+              <label htmlFor={id}>{speedType.name}</label>
+            </div>
+          );
+        })}
+      </fieldset>
     </div>
   );
 };
