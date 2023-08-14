@@ -19,7 +19,7 @@ const About: NextPage = () => {
         <h1 className={styles.header1}>{heading}</h1>
 
         <p className={styles.paragraph}>
-          Runner's Calculator is a free tool for runners to find out what a given pace,
+          Runner&apos;s Calculator is a free tool for runners to find out what a given pace,
           speed or time might be in another unit of measurement - e.g you can see what
           pace in kilometers per hour is in pace per mile.
         </p>
@@ -38,7 +38,7 @@ const About: NextPage = () => {
           Please send them to <a className={styles.aboutlink} href="mailto:runners-calculator@protonmail.com">runners-calculator@protonmail.com</a>
         </p>
         <p className={styles.paragraph}>
-          Runner's Calculator is open source and the code is available on <a className={styles.aboutlink} href="https://github.com/poperor/runners-calculator">GitHub</a>.
+          Runner&apos;s Calculator is open source and the code is available on <a className={styles.aboutlink} href="https://github.com/poperor/runners-calculator">GitHub</a>.
         </p>
       </div>
 
