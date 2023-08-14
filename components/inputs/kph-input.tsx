@@ -19,7 +19,11 @@ export const KphInput = () => {
   return (
     <div>
       <div className={styles.timeinputbox}>
+        <label className={styles.timelabel} htmlFor="kph">
+          kph
+        </label>
         <input
+          id="kph"
           className={styles.speedinput}
           type="text"
           inputMode="numeric"
