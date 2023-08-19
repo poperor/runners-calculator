@@ -1,30 +1,25 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-// Importing the Google Analytics Measurement ID from the environment variable
-const gtag = `https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`;
-export default class MyDocument extends Document {
-  render() {
-    return (
-      <Html>
-        <Head>
-          <script async src={gtag} />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                  page_path: window.location.pathname
-                });
-              `,
-            }}
-          />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
+import { Html, Head, Main, NextScript } from "next/document";
+
+export default function Document() {
+  return (
+    <Html>
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        {/* Necessary to prevent error: window.gtag is not defined for Next.js-hydration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `,
+          }}
+        />
+      </body>
+    </Html>
+  );
 }
