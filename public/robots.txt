@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.runnerscalculator.com/
+
+# Sitemaps
+Sitemap: https://www.runnerscalculator.com/sitemap.xml
