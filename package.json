@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint",
     "test": "jest"
@@ -12,6 +13,7 @@
   "dependencies": {
     "clsx": "^1.2.1",
     "next": "^13.4.3",
+    "next-sitemap": "^4.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "upper-case-first": "^2.0.2"
