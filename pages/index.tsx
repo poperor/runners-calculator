@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 
 const Home: NextPage = () => {
-  const heading = "Convert between various paces and speeds";
+  const heading = "Convert between pace and speed";
   const title = `${heading} - Runner's Calculator`;
   const [selectedFromSpeedTypeId, setSelectedFromSpeedTypeId] =
     useState<string>("");
