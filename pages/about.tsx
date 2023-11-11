@@ -11,8 +11,7 @@ const About: NextPage = () => {
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content="About Runner's caclulator" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="About Runner's caclulator - a tool to convert between different ways of expressing running pace and speed." />
       </Head>
 
       <div className={styles.about}>

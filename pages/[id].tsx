@@ -55,13 +55,17 @@ const Conversion: NextPage<Props> = ({ id }) => {
   if (!inputType || !resultType) {
     return <p>Error</p>;
   }
-  const title = upperCaseFirst(`${inputType.name} to ${resultType.name}`);
-  const fullTitle = upperCaseFirst(`${title} - Runner's Calculator`);
-
+  const syntheticTitle = `${inputType.name} to ${resultType.name}`;
+  const syntheticShortTitle = `${inputType.shortName} to ${resultType.shortName}`;
+  const title = upperCaseFirst(syntheticTitle);
+  const fullTitle = upperCaseFirst(`${syntheticTitle} - Runner's Calculator`);
+  const description = `Convert from ${syntheticTitle}. Also convert between other types of running pace and speed.`;
   return (
     <>
       <Head>
         <title>{fullTitle}</title>
+        <meta name="description" content={description}/>
+        <meta name="keywords" content={`${syntheticShortTitle}, pace, speed, running, runners, runner, calculator`}/>
         <meta name="og:title" content={title} />
       </Head>
       <div>

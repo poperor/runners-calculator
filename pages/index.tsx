@@ -24,8 +24,11 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content="Runner's caclulator" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="A calculator for runners. Convert between different types of running pace and speed"
+        />
+        <meta name="keywords" content={`pace, speed, convert, running, runners, runner, calculator`}/>
       </Head>
 
       <div>
