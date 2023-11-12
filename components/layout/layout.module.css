@@ -3,7 +3,7 @@
   margin: auto;
   background-color: #001f3f;
   color: rgba(0, 0, 0, 0.817);
-  /* height:100vh; */
+  min-height: 100vh;
 }
 
 .main {
