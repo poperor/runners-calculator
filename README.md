@@ -1,4 +1,4 @@
-# Runner's caclulator
+# Runner's calculator
 
 Convert freely between pace and speed. You can also find pace or speed for the time used on any given distance or lap.
 
