@@ -60,6 +60,8 @@ const Conversion: NextPage<Props> = ({ id }) => {
   const title = upperCaseFirst(syntheticTitle);
   const fullTitle = upperCaseFirst(`${syntheticTitle} - Runner's Calculator`);
   const description = `Convert from ${syntheticTitle}. Also convert between other types of running pace and speed.`;
+  // Dynamically construct the canonical URL
+  const canonicalUrl = `https://www.runnerscalculator.com/${id}`;
   return (
     <>
       <Head>
@@ -67,6 +69,7 @@ const Conversion: NextPage<Props> = ({ id }) => {
         <meta name="description" content={description}/>
         <meta name="keywords" content={`${syntheticShortTitle}, pace, speed, running, runners, runner, calculator`}/>
         <meta name="og:title" content={title} />
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
       <div>
         <h1 className={styles.convHeader}>{title}</h1>

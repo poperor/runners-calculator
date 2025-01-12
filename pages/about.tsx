@@ -6,12 +6,14 @@ import styles from "./about.module.css";
 const About: NextPage = () => {
   const heading = "About Runner's Calculator";
   const title = `About - Runner's Calculator`;
+  const canonicalUrl = `https://www.runnerscalculator.com/about`;
 
   return (
     <>
       <Head>
         <title>{title}</title>
         <meta name="description" content="About Runner's calculator - a tool to convert between different ways of expressing running pace and speed." />
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
 
       <div className={styles.about}>

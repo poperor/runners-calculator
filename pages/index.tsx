@@ -19,6 +19,7 @@ const Home: NextPage = () => {
       router.push(path);
     }
   }, [selectedFromSpeedTypeId, selectedToSpeedTypeId]);
+  const canonicalUrl = "https://www.runnerscalculator.com/";
 
   return (
     <>
@@ -29,6 +30,7 @@ const Home: NextPage = () => {
           content="A calculator for runners. Convert between different types of running pace and speed"
         />
         <meta name="keywords" content={`pace, speed, convert, running, runners, runner, calculator`}/>
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
 
       <div>
